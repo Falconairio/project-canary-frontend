@@ -1,38 +1,125 @@
-.App {
+/*@import url("webfonts/balsamiqsans.css");*/
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+  /*font: 'Balsamiq Sans', sans-serif;*/
+  font-family: 'Patrick Hand', cursive;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea:focus, input:focus{
+  outline: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*LOGIN PAGE STYLES */
+.logincontainer {
+  margin-left: 40vw;
+  margin-top: 25vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logincontainer h1 {
+  padding-bottom: 40px;
+  font-size: 3.5em
+}
+.buttonn {
+  display: flex;
+  align-self: center;
+  text-align: center;
+  width: 120px;
+  height: 35px;
+  padding-left: 2.5em;
+  /* padding-left: 35px; */
+  border: 2px solid black;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+}
+.loginpage {
   display: flex;
   flex-direction: column;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+  background-image: url('./paper.png');
+}
+.loginpage form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.loginpage input {
+  margin-bottom: 15px;
+  height: 30px;
+  font-size: 20px;
+  font-family: 'Patrick Hand', cursive;
+  padding-left: 10px;
+  box-shadow: none;
+  border: 2px solid black;
+}
+.loginorsignup {
+  display: flex; 
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
 }
-
-.App-link {
-  color: #61dafb;
+.loginorsignup p {
+  margin-right: 3px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.loginorsignup h1 {
+  text-decoration: underline;
+  text-decoration-skip: none;
+  margin-right: 3px;
+}
+#loginbutton {
+  display: flex;
+  align-self: center;
+  text-align: center;
+  width: 120px;
+  height: 35px;
+  padding-left: 2.5em;
+  /* padding-left: 35px; */
+  border: 2px solid black;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
 }

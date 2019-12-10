@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/AuthProvider';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   state = { username: '', password: '' };
@@ -19,27 +20,37 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
+      <div className = 'logincontainer'>
+        <h1>Project Canary</h1>
+        <div className = 'loginpage'>
+          <div className = 'loginorsignup'>
+            <h1>Login</h1>
+            <p>or...</p>
+            <Link to="/signup">
+                {' '}
+                <button className = 'buttonn' >Signup</button>{' '}
+            </Link>
+          </div>
+          <form onSubmit={this.handleFormSubmit}>
+            <label>Username:</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
 
-          <input type="submit" value="Login" />
-        </form>
+           <button id = 'loginbutton'>Submit</button>
+          </form>
+        </div>
       </div>
     );
   }
