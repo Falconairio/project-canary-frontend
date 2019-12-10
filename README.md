@@ -1,68 +1,220 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PROJECT 3
 
-## Available Scripts
+# PROJECT CANARY
 
-In the project directory, you can run:
+<img width="1019" alt="Screen Shot 2019-12-10 at 3 14 20 PM" src="https://user-images.githubusercontent.com/52801554/70536838-c342cf00-1b5f-11ea-91eb-c82e84d1796e.png">
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a live multiplayer game to prove the tech skills and knowledge gained during the bootcamp. A registered user will be able to create a game, select a field, UX, data or webdev, or even the three of them. Then, anonymous players will be able to join the game using a QR code.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+----
 
-### `npm test`
+## User Stories
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **ERROR PAGES**
+  - **404** - page doesn’t exist 
+  - **500** - internal server error
+- **HOME PAGE - anonymous**
+  - log in
+  - sign up
+    - nickname
+    - bootcamp
+    - avatar
+  - log out redirects here
+- **HOME PAGE - registered user**
+  - Create game
+  - User stats
+- **USER PROFILE**
+  - modify: avatar, nickname, bootcamp
+- **CREATE GAME**
+  - Select field: Data, UX, WebDev, All
+  - Get questions from the collection
+  - Game name
+  - Show QR - waiting for players
+  - Game starting - Countdown
+- **PLAY GAME** - Main device
+  - Show question - possible answers x4
+  - Show right answer - partial score
+  - transition screen to next question
+  - show final scoreboard
+- **GAME** - Player device
+  - Welcome Screen
+    - Add nickname, avatar
+  - Waiting for other players
+  - Question - possible answers screens
+  - Transition screen to next question
+  - Show final score
 
-### `npm run build`
+## 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Front-End (React):
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Routes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Component                | **Route**               | **Description**                                              | Permissions    |
+| ------------------------ | ----------------------- | ------------------------------------------------------------ | -------------- |
+| `SplashPage`             | `/`                     | Main page route.  Renders home component.                    | user only      |
+| `SigninPage`             | `/login`                | Renders `login` form in `signin` component.                  | anon only      |
+| `SigninPage`             | `/signup`               | Renders `signup` form in `signin` component.                 | anon only      |
+|                          |                         |                                                              |                |
+| `CreateGamePage`         | `/create-game`          | Renders the private game screen.                             | user only      |
+| `WaitingForPlayersPage`  | `/game/waiting`         | Main device waiting for players screen showing QR code       | user only      |
+| `StartGamePage`          | `/game/start-game`      | Renders the countdown to start game once the game creator decides all players are in. | user only      |
+| `PlayingGamePage`        | `/game/playing`         | Renders game screen with questions on the main device.       | user only      |
+| `GameFinishedPage`       | `/game/finished`        | Renders score board and winner on the main device.           | user only      |
+|                          |                         |                                                              |                |
+| `UserProfilePage`        | `/user/edit-profile`    | Renders `edit-profile` form view.                            | user only      |
+|                          |                         |                                                              |                |
+| `AddQuestionPage`        | `/user/add-question/`   | Renders add-question component                               | user only      |
+|                          |                         |                                                              |                |
+| `PlayerWelcomePage`      | `/player/join-game`     | After reading the QR, render screen with info and asking user data in player device. | anonymous/user |
+| `PlayerGamePage`         | `/player/join-game`     | Once the game creator starts the game, game screen will be render in all players device. | anonymous/user |
+| `PlayerGameFinishedPage` | `/player/game-finished` | Game screen showing game results in player device.           | anonymous/user |
 
-### `npm run eject`
+## Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- SplashPage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- SigninPage
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- CreateGamePage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- WaitingForPlayersPage
 
-## Learn More
+- StartGamePage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- PlayingGamePage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GameFinishedPage
 
-### Code Splitting
+- UserProfilePage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- AddQuestionPage
 
-### Analyzing the Bundle Size
+- PlayerWelcomePage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- PlayerGamePage
 
-### Making a Progressive Web App
+- PlayerGameFinishedPage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+  
 
-### Advanced Configuration
+## Services
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+- Game Service
+  - game.create()
+  - game.addPlayer(gameId) - Socket / Axios
+  - game.start(gameId)
+  - game.sendQuestion(gameId) - Socket
+  - game.getAnswer(gameId) - Socket
+  - game.finish(gameId)
+- Player Service
+  - player.updateScore
+  - player.getAll
+  - player.getOne
+- Question Service
+  - question.add(QuestionId)
+- User service
+  - user.details(id)
+  - user.delete(id)
+  - user.modify(id)
 
-### Deployment
+## 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+# Server / Backend
 
-### `npm run build` fails to minify
+## Models
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**User** model
+
+```js
+{
+        Name: String,
+        GamesPlayed: [Game ObjectID],
+        profilePic: String, //(cloudinary)
+        bootcamp: enum[data,webdev,ux]
+        gamesCreated: [Game ObjectID],
+        gamesWon: Number
+    }
+```
+
+**Game** model
+
+```js
+{
+        questions: [Question ObjectID],
+        players: [Player ObjectID],
+        winner: Player ObjectID,
+        createdBy: User ObjectID,
+        scoreboard: {player:score}
+        started: Boolean,
+        finished: Boolean,
+    }
+```
+
+**Question** model
+
+```js
+{
+        type: enum[data,webdev,ux],
+        createdBy: User ObjectID,
+        rightAnswer: String,
+        wrongAnswers: [String],
+        picture: String, //(cloudinary)
+        BACKLOG(difficulty: enum[easy,hard])
+    }
+```
+
+**Player** model
+
+```js
+{
+        Name: String,
+        Score: Number,
+        UserID: User ObjectID //(if applicable)
+        //BACKLOG picture: String (cloudinary)
+        bootcamp: enum[data,webdev,ux,other],
+        client: Socket Client Object //if we can
+    }
+```
+
+## API Endpoints (backend routes)
+
+| HTTP Method | URL                       | Request Body                                            | Success status | Error Status | Description                                                  |
+| ----------- | ------------------------- | ------------------------------------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET         | `/auth/me    `            | Saved session                                           | 200            | 404          | Check if user is logged in and return profile page           |
+| POST        | `/auth/signup`            | {name, email, password}                                 | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`             | {username, password}                                    | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| POST        | `/auth/logout`            | (empty)                                                 | 204            | 400          | Logs out the user                                            |
+| POST        | `/game`                   |                                                         | 201            | 400          | Creates a game                                               |
+| GET         | `/game/:gameid`           | {id}                                                    | 200            | 400          | Show the game to be played. Fails if startgame or endgame flag are true. |
+| POST        | /player                   | {name, bootcamp, Client?}                               | 201            | 400          | Creates a new player in the database                         |
+| PATCH       | /player                   | score                                                   | 200            | 400          | Updates the player score per round                           |
+| PATCH       | `/game/:gameid/addplayer` | {player._id}                                            | 200            | 400          | adds joined player to list of players in game                |
+| PATCH       | `/game/:gamid/startgame`  |                                                         | 200            | 400          | Changes start game flag to true                              |
+| PATCH       | `/game/:gameid/endgame`   | {winner}                                                | 200            | 400          | Changes end game flag to true and sets the game winner       |
+| DELETE      | `/profile/:userid`        |                                                         | 204            | 400          | Delete player info                                           |
+| PUT         | `/profile/:userid`        | {name, avatar-url}                                      | 200            | 400          | Edit player info                                             |
+| POST        | `/profile/addquestion`    | {question, rightAnswer, wrongAnswers, type, createdBy } | 201            | 400          | Creates a new question in the database                       |
+
+## Backlog
+
+Animations
+
+Add minigames
+
+Add sounds
+
+Previous games history
+
+Add the ability to choose number of players in a game
+
+Add ADMIN Users
+
+[See the Trello board.](https://trello.com/b/tZ9rgU3H/project3)
