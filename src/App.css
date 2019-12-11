@@ -134,7 +134,8 @@ textarea:focus, input:focus, button:focus{
 }
 .signupform {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   border: 2px solid black;
   width: 700px;
   height: 300px;
@@ -147,11 +148,12 @@ textarea:focus, input:focus, button:focus{
   margin-right: 10px;
 }
 .signupform input {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     height: 30px;
     font-size: 20px;
     font-family: 'Patrick Hand', cursive;
     padding-left: 10px;
+    margin-left: 20px;;
     box-shadow: none;
     border: 2px solid black;
     width: 300px;
@@ -159,5 +161,17 @@ textarea:focus, input:focus, button:focus{
 .signupform h1 {
   text-decoration: underline;
   text-decoration-skip: none;
-  margin-right: 3px;
+  margin-right: 10px;
+  margin-left: 20px;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+.rightsidesignup {
+  margin-right: 80px;
+  margin-top: 5px;
+}
+#signupbutton {
+  position: absolute;
+  margin-left: 435px;
+  margin-top: 200px;
 }

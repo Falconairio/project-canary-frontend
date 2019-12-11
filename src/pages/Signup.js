@@ -4,15 +4,19 @@ import { withAuth } from '../lib/AuthProvider';
 import authService from '../lib/auth-service'
 
 class Signup extends Component {
-  state = { username: '', password: '', photoUrl: '' };
+  state = { username: '', password: '', photoUrl: '', confirmpassword: '', errormessage: ''};
 
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    const { username, password, photoUrl } = this.state;
+    const { username, password, photoUrl, confirmpassword, errormessage } = this.state;
     //  console.log('Signup -> form submit', { username, password });
+    if( password === confirmpassword) {
     this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
-    this.context.history.push('/home')
+    this.props.history.push('/home')
+    } else {
+      this.setState({errormessage: 'Enter the same password for both fields'})
+    }
   };
   handleChange = event => {
     const { name, value } = event.target;
@@ -33,9 +37,11 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, confirmpassword } = this.state;
     return (
+      <div> 
       <div className = 'signupform'>
+        <div>
         <h1>Sign Up</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
@@ -53,16 +59,38 @@ class Signup extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          <input type='file' name='picture' placeholder="Picture Url" onChange = {this.fileOnchange}/>
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            name="confirmpassword"
+            value={confirmpassword}
+            onChange={this.handleChange}
+          />
+          <label>Profile Picture:</label>
+          <input type='file' 
+          name='picture' 
+          placeholder="Picture Url" 
+          onChange = {this.fileOnchange}
+          />
 
           <button className='buttonn' id = 'signupbutton'>Sign Up</button>
         </form>
-
+        </div>
+        <div className = 'rightsidesignup'>
+        <label>Preview:</label>
+        <div style = {{border: '2px solid black',height: '200px', width: '200px', backgroundImage: `url(${this.state.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '6px'}}></div>
         <p>Already have account?</p>
         <Link to="/">
-                {' '}
-                <button className = 'buttonn' >Login</button>
-            </Link>
+          {' '}
+          <button className = 'buttonn' >Login</button>
+        </Link>
+        </div>
+      </div>
+        {
+          this.state.errormessage
+          ?<h1>{this.state.errormessage}</h1>
+          :null
+        }
       </div>
     );
   }
