@@ -47,7 +47,7 @@ table {
 button {
   text-align: center;
 }
-textarea:focus, input:focus{
+textarea:focus, input:focus, button:focus{
   outline: none;
 }
 /*LOGIN PAGE STYLES */
@@ -122,4 +122,27 @@ textarea:focus, input:focus{
   border: 2px solid black;
   font-family: 'Patrick Hand', cursive;
   font-size: 15px;
+}
+.signupform {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+  background-image: url('./paper.png');
+}
+.signupform form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.signupform input {
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 20px;
+    font-family: 'Patrick Hand', cursive;
+    padding-left: 10px;
+    box-shadow: none;
+    border: 2px solid black;
 }

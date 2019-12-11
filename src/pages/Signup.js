@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
+import { parser } from '../config/cloudinary';
+import authService from '../lib/auth-service'
 
 class Signup extends Component {
-  state = { username: '', password: '' };
+  state = { username: '', password: '', photoUrl: '' };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
+    console.log(this.state)
+    const { username, password, photoUrl } = this.state;
     //  console.log('Signup -> form submit', { username, password });
-    this.props.signup({ username, password }); // props.signup is Provided by withAuth() and Context API
+    this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
   };
-
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+  fileOnchange = (event) => {    
+    console.log(this.props)
+    const file = event.target.files[0];
+    const uploadData = new FormData()
+    uploadData.append('photo', file)
+
+    authService.imageUpload(uploadData)
+    .then((photoUrl) => {
+      console.log(photoUrl)
+      this.setState({photoUrl})
+    })
+    .catch((error) => console.log(error))
+  }
 
   render() {
     const { username, password } = this.state;
     return (
-      <div>
+      <div className = 'signupform'>
         <h1>Sign Up</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
@@ -38,12 +53,16 @@ class Signup extends Component {
             value={password}
             onChange={this.handleChange}
           />
+          <input type='file' name='picture' placeholder="Picture Url" onChange = {this.fileOnchange}/>
 
-          <input type="submit" value="Signup" />
+          <input type="submit" value="Signup" className = 'buttonn'/>
         </form>
 
         <p>Already have account?</p>
-        <Link to={'/login'}> Login</Link>
+        <Link to="/login">
+                {' '}
+                <button className = 'buttonn' >Login</button>
+            </Link>
       </div>
     );
   }

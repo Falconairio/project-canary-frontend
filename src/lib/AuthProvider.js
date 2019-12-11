@@ -4,6 +4,8 @@ import React from 'react';
 import authService from './auth-service'; // IMPORT functions for axios requests to API
 const { Consumer, Provider } = React.createContext();
 
+
+
 // HOC to create Consumer
 const withAuth = WrappedComponent => {
   return class extends React.Component {
@@ -45,10 +47,11 @@ class AuthProvider extends React.Component {
   }
 
   signup = user => {
-    const { username, password } = user;
+    console.log(user)
+    const { username, password, photoUrl } = user;
 
     authService
-      .signup({ username, password })
+      .signup({ username, password, photoUrl })
       .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => console.log(err));
   };
@@ -71,10 +74,10 @@ class AuthProvider extends React.Component {
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup } = this;
+    const { login, logout, signup, imageUpload } = this;
 
     return (
-      <Provider value={{ isLoading, isLoggedin, user, login, logout, signup }}>
+      <Provider value={{ isLoading, isLoggedin, user, login, logout, signup, imageUpload}}>
         {this.props.children}
       </Provider>
     );

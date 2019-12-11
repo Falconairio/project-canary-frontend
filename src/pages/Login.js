@@ -51,9 +51,12 @@ class Login extends Component {
            <button id = 'loginbutton'>Submit</button>
           </form>
         </div>
+        <button onClick={this.props.logout}>Logout</button>
       </div>
     );
   }
 }
 
 export default withAuth(Login);
+
+

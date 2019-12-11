@@ -3,18 +3,22 @@ import axios from 'axios';
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:5000',
+      baseURL: 'http://192.168.1.63:3000',
       withCredentials: true,
     });
   }
 
   signup(user) {
-    const { username, password } = user;
+    console.log(user);
+    const { username, password, photoUrl } = user;
     return this.auth
-      .post('/auth/signup', { username, password })
+      .post('/auth/signup', { username, password, photoUrl })
       .then(({ data }) => data);
   }
-
+  imageUpload(file) {
+    return this.auth.post('/auth/signup/image', file)
+    .then(({data}) => data)
+  }
   login(user) {
     const { username, password } = user;
     return this.auth
