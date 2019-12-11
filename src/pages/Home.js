@@ -6,6 +6,9 @@ class Private extends Component {
   state = {
     Rank: 'Noob'
   }
+  edit = () => {
+    
+  }
   componentDidMount() {
     if(this.props.user.gamesWon >= 5) {
       this.setState({Rank: 'Experienced'})
@@ -39,15 +42,19 @@ class Private extends Component {
               <p>Games Won: {this.props.user.gamesWon}</p>
             </div>
             <div className = 'icondivbottom'>
-
+              <Link to = '/home/editprofile'>
+                {' '}
+                <img src={require('./../images/edit.svg')} alt = '' className = 'editicon'/>
+              </Link>
+              <img src={require('./../images/trash-2.svg')} alt = '' className = 'trashicon'/>
             </div>
           </div>
-          <div className = 'addquestiondiv'>
           <Link to="/addquestion">
             {' '}
+          <div className = 'addquestiondiv'>
             <h1>Add a Question</h1>
-          </Link>
           </div>
+          </Link>
         </div>
       </div>
       
