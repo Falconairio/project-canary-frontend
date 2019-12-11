@@ -9,6 +9,7 @@ class Login extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     this.props.login({ username, password });
+    this.props.history.push('/home')
   };
 
   handleChange = event => {
@@ -51,7 +52,6 @@ class Login extends Component {
            <button id = 'loginbutton'>Submit</button>
           </form>
         </div>
-        <button onClick={this.props.logout}>Logout</button>
       </div>
     );
   }

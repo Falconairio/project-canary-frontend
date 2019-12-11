@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../lib/AuthProvider';
-import { parser } from '../config/cloudinary';
 import authService from '../lib/auth-service'
 
 class Signup extends Component {
@@ -13,6 +12,7 @@ class Signup extends Component {
     const { username, password, photoUrl } = this.state;
     //  console.log('Signup -> form submit', { username, password });
     this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
+    this.context.history.push('/home')
   };
   handleChange = event => {
     const { name, value } = event.target;
@@ -55,11 +55,11 @@ class Signup extends Component {
           />
           <input type='file' name='picture' placeholder="Picture Url" onChange = {this.fileOnchange}/>
 
-          <input type="submit" value="Signup" className = 'buttonn'/>
+          <button className='buttonn' id = 'signupbutton'>Sign Up</button>
         </form>
 
         <p>Already have account?</p>
-        <Link to="/login">
+        <Link to="/">
                 {' '}
                 <button className = 'buttonn' >Login</button>
             </Link>
