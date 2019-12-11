@@ -20,6 +20,7 @@ time, mark, audio, video {
   /*font: 'Balsamiq Sans', sans-serif;*/
   font-family: 'Patrick Hand', cursive;
   vertical-align: baseline;
+  text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -240,4 +241,13 @@ textarea:focus, input:focus, button:focus{
   border: 2px solid black;
   height: 25vh;
   width: 38vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.addquestiondiv h1 {
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
 }

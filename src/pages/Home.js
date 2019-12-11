@@ -38,11 +38,14 @@ class Private extends Component {
               <p>Games Played: {this.props.user.gamesPlayed.length}</p>
               <p>Games Won: {this.props.user.gamesWon}</p>
             </div>
+            <div className = 'icondivbottom'>
+
+            </div>
           </div>
           <div className = 'addquestiondiv'>
           <Link to="/addquestion">
             {' '}
-            Add a Question
+            <h1>Add a Question</h1>
           </Link>
           </div>
         </div>
