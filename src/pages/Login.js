@@ -3,13 +3,17 @@ import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
-  state = { username: '', password: '' };
+  state = { username: '', password: '', errormessage: '' };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
-    this.props.login({ username, password });
-    this.props.history.push('/home')
+    const { username, password, errormessage } = this.state;
+    if(username && password) {
+      this.props.login({ username, password });
+      this.props.history.push('/home')
+    } else {
+      this.setState({errormessage:'Enter text in all fields'})
+      }
   };
 
   handleChange = event => {
@@ -18,11 +22,11 @@ class Login extends Component {
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, errormessage } = this.state;
 
     return (
       <div className = 'logincontainer'>
-        <h1>Project Canary</h1>
+        <h1 className = 'canaryheader'>Project Canary</h1>
         <div className = 'loginpage'>
           <div className = 'loginorsignup'>
             <h1>Login</h1>
@@ -52,6 +56,11 @@ class Login extends Component {
            <button id = 'loginbutton'>Submit</button>
           </form>
         </div>
+        {
+          this.state.errormessage
+          ?<p>{this.state.errormessage}</p>
+          :null
+        }
       </div>
     );
   }

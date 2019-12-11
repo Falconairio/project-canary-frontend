@@ -3,7 +3,8 @@ import axios from 'axios';
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://192.168.1.63:3000',
+      // baseURL: 'http://192.168.1.63:3000',
+      baseURL: 'http://localhost:5000',
       withCredentials: true,
     });
   }

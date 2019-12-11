@@ -11,11 +11,19 @@ class Signup extends Component {
     console.log(this.state)
     const { username, password, photoUrl, confirmpassword, errormessage } = this.state;
     //  console.log('Signup -> form submit', { username, password });
+    if(username,password,confirmpassword) {
     if( password === confirmpassword) {
-    this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
-    this.props.history.push('/home')
+      if(photoUrl) {
+        this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
+        this.props.history.push('/home')
+      } else {
+        this.setState({errormessage: 'Slow down! Wait for the photo to load'})
+      }
     } else {
       this.setState({errormessage: 'Enter the same password for both fields'})
+    }
+    } else {
+      this.setState({errormessage: 'Enter text in all fields if you want to signup'})
     }
   };
   handleChange = event => {
@@ -40,6 +48,7 @@ class Signup extends Component {
     const { username, password, confirmpassword } = this.state;
     return (
       <div> 
+      <h1 className = 'canaryheader'>Project Canary</h1>
       <div className = 'signupform'>
         <div>
         <h1>Sign Up</h1>
@@ -78,7 +87,7 @@ class Signup extends Component {
         </div>
         <div className = 'rightsidesignup'>
         <label>Preview:</label>
-        <div style = {{border: '2px solid black',height: '200px', width: '200px', backgroundImage: `url(${this.state.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '6px'}}></div>
+        <div style = {{border: '2px solid black',height: '200px', width: '200px', backgroundImage: `url(${this.state.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '10px'}}></div>
         <p>Already have account?</p>
         <Link to="/">
           {' '}

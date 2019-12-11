@@ -138,7 +138,7 @@ textarea:focus, input:focus, button:focus{
   justify-content: space-between;
   border: 2px solid black;
   width: 700px;
-  height: 300px;
+  height: 330px;
   background-image: url('./paper.png');
 }
 .signupform form {
@@ -168,10 +168,76 @@ textarea:focus, input:focus, button:focus{
 }
 .rightsidesignup {
   margin-right: 80px;
-  margin-top: 5px;
+  margin-top: 38.5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-#signupbutton {
-  position: absolute;
-  margin-left: 435px;
-  margin-top: 200px;
+
+/*HOMESCREEN STYLES*/
+
+.creategamediv {
+  width: 90vw;
+  height: 30vh;
+  border: 2px solid black;
+}
+.topdivandlogout {
+  display: flex;
+  flex-direction: row;
+}
+.plusicon {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  align-self: flex-end;
+}
+.exiticon {
+  height: 50px;
+  width: 50px;
+}
+.canaryheader {
+  font-size: 3.5rem;
+  padding-bottom: 15px;
+  display: flex;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+}
+.profilediv {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  
+  height: 25vh;
+  width: 50vw;
+}
+.profilediv p {
+  border: 2px solid black;
+  font-size: 40px;
+  width: 27vw;
+}
+.profiledivtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 20px;
+}
+.profiledivtextheader {
+  font-size: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bottomdiv {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.addquestiondiv {
+  margin-left: 30px;
+  border: 2px solid black;
+  height: 25vh;
+  width: 38vw;
 }

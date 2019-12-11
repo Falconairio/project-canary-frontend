@@ -14,11 +14,12 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          {/* <AnonRoute exact path="/signup" component={Signup} />
-          <AnonRoute exact path="/" component={Login} /> */}
-          <Route exact path = '/signup' component ={Signup} />
-          <Route exact path = '/' component ={Login} />
+          <AnonRoute exact path="/signup" component={Signup} />
+          <AnonRoute exact path="/" component={Login} />
+          {/* <Route exact path = '/signup' component ={Signup} />
+          <Route exact path = '/' component ={Login} /> */}
           <PrivateRoute exact path="/home" component={Private} />
+          {/* <Route exact path = '/home' component = {Private} /> */}
         </Switch>
       </div>
     );
