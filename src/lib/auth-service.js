@@ -50,6 +50,9 @@ class Auth {
   me() {
     return this.auth.get('/auth/me').then(response => response.data);
   }
+  addQuestion(questionData) {
+    return this.auth.post('/profile/addquestion',questionData)
+  }
 }
 
 const axiosRequestFunctions = new Auth();

@@ -3,7 +3,7 @@ import { withAuth } from '../lib/AuthProvider'
 import authService from '../lib/auth-service'
 
  class AddQuestion extends Component {
-    state = {questionType:'', correctAnswer:'', wrongAnswer1:'',wrongAnswer2:'',wrongAnswer3:'',photoUrl:''}
+    state = {questionType:'', rightAnswer:'', wrongAnswer1:'',wrongAnswer2:'',wrongAnswer3:'',photoUrl:''}
 
     fileOnchange = (event) => {    
         const file = event.target.files[0];
@@ -20,11 +20,19 @@ import authService from '../lib/auth-service'
         const { name, value } = event.target;
         this.setState({ [name]: value });
       };
-    
+    handleSubmit = e => {
+        e.preventDefault();
+        const newQuestion = this.state;
+        console.log(newQuestion);
+        this.props.addQuestion(newQuestion);
+
+
+
+
+    }
 
     render() {
-        const {questionType, correctAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl} = this.state;
-        console.log(this.state);
+        const {questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl} = this.state;
         return (
             <section className = 'addquestioncontainer'>
                 <h1>Add Question</h1>
@@ -43,8 +51,8 @@ import authService from '../lib/auth-service'
                 />
                 <label>Preview:</label>
                 <div style = {{border: '2px solid black',height: '200px', width: '200px',       backgroundImage: `url(${photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '10px'}}></div>
-                <label>Correct Answer</label>
-                <input type='text' name='correctAnswer' value={correctAnswer} onChange={this.handleChange}/>
+                <label>Right Answer</label>
+                <input type='text' name='rightAnswer' value={rightAnswer} onChange={this.handleChange}/>
 
                 <label>Wrong Answer 1</label>
                 <input type='text' name='wrongAnswer1' value={wrongAnswer1} onChange={this.handleChange}/>
@@ -55,7 +63,7 @@ import authService from '../lib/auth-service'
                 <label>Wrong Answer 3</label>
                 <input type='text' name='wrongAnswer3' value={wrongAnswer3} onChange={this.handleChange}/>
 
-                <button>Submit</button>
+                <button onClick={this.handleSubmit}>Submit</button>
                 
             </section>
         )

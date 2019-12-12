@@ -13,7 +13,7 @@ const withAuth = WrappedComponent => {
       return (
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
-          {({ login, signup, user, logout, update, me, isLoggedin, deletee }) => {
+          {({ login, signup, user, logout, update, me, isLoggedin, deletee, addQuestion }) => {
             return (
               <WrappedComponent
                 deleteuser={deletee}
@@ -24,6 +24,7 @@ const withAuth = WrappedComponent => {
                 update={update}
                 logout={logout}
                 isLoggedin={isLoggedin}
+                addQuestion={addQuestion}
                 {...this.props}
               />
             );
@@ -57,17 +58,23 @@ class AuthProvider extends React.Component {
       .signup({ username, password, photoUrl, email })
       .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => console.log(err));
-  };
-  update = user => {
+    };
+    update = user => {
     console.log('in authprovider update', user)
     const { username, email, oldpassword, password, photoUrl } = user;
     authService
-      .update({ username, email, oldpassword, password, photoUrl })
+    .update({ username, email, oldpassword, password, photoUrl })
       .then(user => this.setState({user}))
       .catch(err => console.log(err));
-  }
-
-  login = user => {
+    }
+    addQuestion = newQuestion => {
+      
+      authService
+        .addQuestion(newQuestion)
+        .then()
+    }
+    
+    login = user => {
     const { email, password } = user;
 
     authService
@@ -95,12 +102,13 @@ class AuthProvider extends React.Component {
       .catch(err => console.log(err));
   }
 
+
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup, imageUpload, update, me, deletee } = this;
+    const { login, logout, signup, imageUpload, update, me, deletee, addQuestion } = this;
     console.log('this is the props',this.props)
     return (
-      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee}}>
+      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee, addQuestion}}>
         {this.props.children}
       </Provider>
     );
