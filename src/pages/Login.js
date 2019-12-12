@@ -37,7 +37,7 @@ class Login extends Component {
             </Link>
           </div>
           <form onSubmit={this.handleFormSubmit}>
-            <label>Username:</label>
+            <label>Email:</label>
             <input
               type="text"
               name="username"

@@ -48,7 +48,7 @@ class Private extends Component {
               <div className = 'profiledivtextheader'>{this.props.user.username}
               <article>Rank: {this.state.Rank}</article>
               </div>
-              <p>Games Played: {this.props.user.gamesPlayed.length}</p>
+              <p>Games Played: {this.props.user.gamesPlayed}</p>
               <p>Games Won: {this.props.user.gamesWon}</p>
             </div>
             <div className = 'icondivbottom'>

@@ -270,7 +270,7 @@ textarea:focus, input:focus, button:focus{
   border: 2px solid black;
   height: 40vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: absolute;
   align-self: center;
   justify-self: center;
@@ -286,4 +286,54 @@ textarea:focus, input:focus, button:focus{
   font-size: 40px;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+.editcontainer form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.editcontainer input {
+  margin-bottom: 15px;
+    height: 30px;
+    font-size: 20px;
+    font-family: 'Patrick Hand', cursive;
+    padding-left: 10px;
+    margin-left: 20px;;
+    box-shadow: none;
+    border: 2px solid black;
+    width: 150px;
+    margin-right: 10px;
+}
+.editformwithlabel {
+  display: flex;
+  flex-direction: column;
+}
+.inputcolumn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.labelwithpreview {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.8vw;
+  margin-left: 5vw;
+}
+.inputrows {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.previewandicon {
+  display: flex;
+  flex-direction: row;
+}
+.previewandicon a {
+  margin-left: 2vw;
+  margin-top: 4vh;
+}
+.previewandicon img {
+  width: 2.5vw;
+  height: 2.5vw;
 }
