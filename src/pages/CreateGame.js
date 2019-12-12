@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from '../lib/AuthProvider';
+import { Link } from 'react-router-dom';
 
 class CreateGame extends Component {
     state = {
@@ -39,7 +40,12 @@ class CreateGame extends Component {
         const {numberofquestions, webdevcheck, datanylcheck, uxcheck, name} = this.state
         return (
             <div className = 'addgamecontainer'>
-                <h1>Create Game</h1>
+                <div className = 'creategameheader'>
+                    <h1>Create Game</h1>
+                    <Link to='/home'>
+                        <img src={require('./../images/corner-up-left.svg')} alt='' />
+                    </Link>
+                </div>
                 <form>
                 <label>Game Title:</label>
                     <input

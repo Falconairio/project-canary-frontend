@@ -48,10 +48,11 @@ class Home extends Component {
           :null
         }
         <div className = 'topdivandlogout'>
-          <div className = 'creategamediv'>
-          <Link to="/creategame">
+          <div>
+          <Link to="/creategame" className ='creategamediv'>
             {' '}
             <img src={require('./../images/plus-square.svg')} alt = '' className = 'plusicon'/>
+            <h1>Create a Game</h1>
           </Link>
           </div>
           <a onClick = {this.props.logout}>
