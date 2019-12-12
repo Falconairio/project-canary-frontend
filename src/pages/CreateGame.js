@@ -15,13 +15,17 @@ class CreateGame extends Component {
       };
       handleFormSubmit = event => {
         event.preventDefault();
-        const { username, password, errormessage, email } = this.state;
-        if(email && password) {
-          this.props.login({ password, email });
-          this.props.history.push('/home')
+        const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = this.state;
+        if(webdevcheck !== false && datanylcheck !== false && uxcheck !== false) {
+            if(numberofquestions, name) {
+                this.props.creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name });
+                this.props.history.push('/home')
+            } else {
+            this.setState({errormessage:'Enter a name'})
+            }
         } else {
-          this.setState({errormessage:'Enter text in all fields'})
-          }
+            this.setState({errormessage:'Select at least one question type'})
+        }
       };
       multiselect = event => {
         const { value } = event.target;
@@ -76,7 +80,7 @@ class CreateGame extends Component {
                         onChange = {this.checkBox}
                             />
                     </div>
-                    <button className='buttonn' id = 'creategamebutton'>Create Game</button>
+                    <button className='buttonn' id = 'creategamebutton' onClick = {this.handleFormSubmit}>Create Game</button>
                 </form>
             </div>
         )

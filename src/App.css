@@ -433,6 +433,8 @@ input {
 }
 .checkboxdiv input {
   margin-bottom: -10px;
+  border: 2px solid black;
+  width: 20px;  
 }
 #creategamebutton {
   margin-top: 20px;

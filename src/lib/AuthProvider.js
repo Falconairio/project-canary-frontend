@@ -36,7 +36,7 @@ const withAuth = WrappedComponent => {
 
 // Provider
 class AuthProvider extends React.Component {
-  state = { isLoggedin: false, user: null, isLoading: true };
+  state = { isLoggedin: false, user: null, isLoading: true, game: null };
 
   componentDidMount() {
     authService
@@ -94,9 +94,16 @@ class AuthProvider extends React.Component {
       .then((user) => this.setState({user:user}))
       .catch(err => console.log(err));
   }
+  creategame = (data) => {
+    const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = data
+    authService
+      .creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
+        .then( (data) => this.setState({game:data}))
+        .catch( (err) => console.log(err));
+  }
 
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, game } = this.state;
     const { login, logout, signup, imageUpload, update, me, deletee } = this;
     console.log('this is the props',this.props)
     return (

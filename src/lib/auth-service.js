@@ -46,10 +46,14 @@ class Auth {
   logout() {
     return this.auth.post('/auth/logout', {}).then(response => response.data);
   }
-
+  creategame(game) {
+    const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = game;
+    return this.auth.post('/game', { numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
+  }
   me() {
     return this.auth.get('/auth/me').then(response => response.data);
   }
+
 }
 
 const axiosRequestFunctions = new Auth();
