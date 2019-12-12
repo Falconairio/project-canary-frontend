@@ -3,8 +3,13 @@ import axios from 'axios';
 class Auth {
   constructor() {
     this.auth = axios.create({
+<<<<<<< HEAD
       baseURL: 'http://192.168.1.63:5000',
       // baseURL: 'http://localhost:5000',
+=======
+      //baseURL: 'http://192.168.1.63:5000',
+      baseURL: 'http://localhost:5000',
+>>>>>>> Johann
       withCredentials: true,
     });
   }
@@ -53,7 +58,9 @@ class Auth {
   me() {
     return this.auth.get('/auth/me').then(response => response.data);
   }
-
+  addQuestion(questionData) {
+    return this.auth.post('/profile/addquestion',questionData)
+  }
 }
 
 const axiosRequestFunctions = new Auth();
