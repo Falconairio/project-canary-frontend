@@ -68,7 +68,6 @@ class AuthProvider extends React.Component {
       .catch(err => console.log(err));
     }
     addQuestion = newQuestion => {
-      
       authService
         .addQuestion(newQuestion)
         .then()

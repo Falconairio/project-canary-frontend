@@ -3,7 +3,7 @@ import { withAuth } from '../lib/AuthProvider'
 import authService from '../lib/auth-service'
 
  class AddQuestion extends Component {
-    state = {questionType:'', rightAnswer:'', wrongAnswer1:'',wrongAnswer2:'',wrongAnswer3:'',photoUrl:''}
+    state = {questionType:'', rightAnswer:'', wrongAnswer1:'',wrongAnswer2:'',wrongAnswer3:'',photoUrl:'',difficulty:'',errorMessage:''}
 
     fileOnchange = (event) => {    
         const file = event.target.files[0];
@@ -22,17 +22,18 @@ import authService from '../lib/auth-service'
       };
     handleSubmit = e => {
         e.preventDefault();
-        const newQuestion = this.state;
-        console.log(newQuestion);
-        this.props.addQuestion(newQuestion);
-
-
-
-
+        const {questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl} = this.state;
+        if (questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl) {
+            const newQuestion = this.state;
+            this.props.addQuestion(newQuestion);
+        }
+        else {
+            this.setState({errorMessage:'All fields are mandatory'})
+        }        
     }
 
     render() {
-        const {questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl} = this.state;
+        const {questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl,difficulty,errorMessage} = this.state;
         return (
             <section className = 'addquestioncontainer'>
                 <h1>Add Question</h1>
@@ -63,8 +64,19 @@ import authService from '../lib/auth-service'
                 <label>Wrong Answer 3</label>
                 <input type='text' name='wrongAnswer3' value={wrongAnswer3} onChange={this.handleChange}/>
 
+                <label>Difficulty</label>
+                <select name="difficulty" value={difficulty} onChange={this.handleChange}>
+                    <option value="">--Please choose an option--</option>
+                    <option value="easy">Easy</option>
+                    <option value="hard">Hard</option>                    
+                </select>
+
                 <button onClick={this.handleSubmit}>Submit</button>
-                
+                {
+                    this.state.errorMessage
+                    ?<p>{this.state.errorMessage}</p>
+                    :null
+                }
             </section>
         )
     }
