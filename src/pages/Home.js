@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
+import Edit from './Edit';
 
 class Private extends Component {
   state = {
-    Rank: 'Noob'
+    Rank: 'Noob',
+    edittoggle: false,
+    deletetoggle: false,
   }
-  edit = () => {
-    
+  toggleedit = (event) => {
+    event.preventDefault();
+    let toggle = !this.state.edittoggle
+    this.setState({edittoggle: toggle})
   }
   componentDidMount() {
     if(this.props.user.gamesWon >= 5) {
@@ -19,6 +24,11 @@ class Private extends Component {
   render() {
     return (
       <div>
+        {
+          this.state.edittoggle
+          ?<Edit edittoggle = {this.toggleedit}/>
+          :null
+        }
         <div className = 'topdivandlogout'>
           <div className = 'creategamediv'>
           <Link to="/creategame">
@@ -42,10 +52,9 @@ class Private extends Component {
               <p>Games Won: {this.props.user.gamesWon}</p>
             </div>
             <div className = 'icondivbottom'>
-              <Link to = '/home/editprofile'>
-                {' '}
+              <a onClick = {this.toggleedit} style = {{border:'none'}} href = ''>
                 <img src={require('./../images/edit.svg')} alt = '' className = 'editicon'/>
-              </Link>
+              </a>
               <img src={require('./../images/trash-2.svg')} alt = '' className = 'trashicon'/>
             </div>
           </div>
@@ -63,3 +72,9 @@ class Private extends Component {
 }
 
 export default withAuth(Private);
+
+
+
+
+
+

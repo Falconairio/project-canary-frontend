@@ -9,8 +9,9 @@ class Edit extends Component {
     }
     render() {
         return (
-            <div>
-                <h1>This worksGBRWGRGRLUBBBFHJBHEBJJHBERJHEJHBEHJRER</h1>
+            <div className = 'editcontainer'>
+                <h1>Edit Profile</h1>
+                <button onClick = {this.props.edittoggle} class = 'buttonn'>Submit</button>
             </div>
         )
     }
