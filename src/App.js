@@ -6,9 +6,11 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import AddQestion from './pages/AddQuestion';
+import CreateGame from './pages/CreateGame';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
+
 
 class App extends Component {
   render() {
@@ -21,6 +23,7 @@ class App extends Component {
           <Route exact path = '/' component ={Login} /> */}
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute exact path="/addquestion" component = {AddQestion} />
+          <PrivateRoute exact path= "/creategame" component = {CreateGame} />
           {/* <Route exact path = '/home' component = {Private} /> */}
         </Switch>
       </div>

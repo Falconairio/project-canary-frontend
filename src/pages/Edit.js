@@ -28,10 +28,9 @@ class Edit extends Component {
           this.setState({errormessage: 'Enter the same password for both fields'})
         }
         //this.props.edittoggle(event);
-        console.log('this is the handleformsubmit history',this.props.history)
         this.props.history.push('/home')
       };
-    handleChange = event => {
+        handleChange = event => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
       };
