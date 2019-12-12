@@ -60,7 +60,7 @@ button {
     align-items: center;
     justify-content: center;
 }
-textarea:focus, input:focus, button:focus{
+textarea:focus, input:focus, button:focus, select:focus{
   outline: none;
 }
 input {
@@ -385,6 +385,8 @@ input {
   width: 700px;
   height: 360px;
   background-image: url('./paper.png');
+  display: flex;
+  flex-direction: column;
 }
 .addquestioncontainer h1 {
   font-size: 30px;
@@ -393,7 +395,43 @@ input {
   margin-left: 10px;
   text-decoration: underline;
 }
-
+.addquestionform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2vw;
+}
+.addquestionform input {
+  margin-right: 2vw;
+}
+.addquestionoutterform {
+  display: flex;
+  flex-direction: row;
+}
+.addquestionform input {
+  width: 10vw;
+  border: 2px solid black;
+}
+.addquestionform select {
+  border: 2px solid black;
+  width: 11vw
+}
+.questioncolumn {
+  display: flex;
+  flex-direction: column;
+}
+.questioncolumn input, select {
+  margin-bottom: 0.7vh;
+}
+.previewquestionimage {
+  margin-left: 1vw;
+}
+#questionbutton {
+  text-align: center;
+  padding-left: 2vw;
+  margin-top: 2vh;
+}
 /*ADDGAME STYLES*/
 
 .addgamecontainer {
