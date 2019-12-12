@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 import Edit from './Edit';
+import Delete from './Delete';
 
-class Private extends Component {
+class Home extends Component {
   state = {
     Rank: 'Noob',
     edittoggle: false,
     deletetoggle: false,
   }
+
   toggleedit = (event) => {
     event.preventDefault();
-    let toggle = !this.state.edittoggle
-    this.setState({edittoggle: toggle})
+    let toggle = !this.state.edittoggle;
+    this.setState({edittoggle: toggle});
+    this.props.me();
+    // if(toggle === false) {
+    //   this.props.history.push('/home')
+    // }
   }
+
+  toggledelete = (event) => {
+    event.preventDefault()
+    let toggle = !this.state.deletetoggle;
+    this.setState({deletetoggle:toggle});
+  }
+
   componentDidMount() {
     if(this.props.user.gamesWon >= 5) {
       this.setState({Rank: 'Experienced'})
@@ -27,6 +40,11 @@ class Private extends Component {
         {
           this.state.edittoggle
           ?<Edit edittoggle = {this.toggleedit}/>
+          :null
+        }
+        {
+          this.state.deletetoggle
+          ?<Delete deletetoggle = {this.toggledelete}/>
           :null
         }
         <div className = 'topdivandlogout'>
@@ -48,14 +66,18 @@ class Private extends Component {
               <div className = 'profiledivtextheader'>{this.props.user.username}
               <article>Rank: {this.state.Rank}</article>
               </div>
-              <p>Games Played: {this.props.user.gamesPlayed}</p>
-              <p>Games Won: {this.props.user.gamesWon}</p>
+              <p>Games Played: {this.props.user.gamesPlayed
+                                ?this.props.user.gamesPlayed.length :null}</p>
+              <p>Games Won: {this.props.user.gamesWon
+                                ?this.props.user.gamesWon.length :null}</p>
             </div>
             <div className = 'icondivbottom'>
               <a onClick = {this.toggleedit} style = {{border:'none'}} href = ''>
                 <img src={require('./../images/edit.svg')} alt = '' className = 'editicon'/>
               </a>
+              <a onClick = {this.toggledelete} style = {{border:'none'}} href =''>
               <img src={require('./../images/trash-2.svg')} alt = '' className = 'trashicon'/>
+              </a>
             </div>
           </div>
           <Link to="/addquestion">
@@ -71,7 +93,7 @@ class Private extends Component {
   }
 }
 
-export default withAuth(Private);
+export default withAuth(Home);
 
 
 

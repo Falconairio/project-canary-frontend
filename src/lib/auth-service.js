@@ -32,9 +32,14 @@ class Auth {
     .then(({data}) => data)
   }
   login(user) {
-    const { username, password } = user;
+    const { email, password } = user;
     return this.auth
-      .post('/auth/login', { username, password })
+      .post('/auth/login', { email, password })
+      .then(({ data }) => data);
+  }
+  delete() {
+    return this.auth
+      .delete('/user/delete',{}).then(response => response.data)
       .then(({ data }) => data);
   }
 

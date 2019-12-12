@@ -4,17 +4,17 @@ import { withAuth } from '../lib/AuthProvider';
 import authService from '../lib/auth-service'
 
 class Signup extends Component {
-  state = { username: '', password: '', photoUrl: '', confirmpassword: '', errormessage: ''};
+  state = { username: '', password: '',email:'', photoUrl: '', confirmpassword: '', errormessage: ''};
 
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    const { username, password, photoUrl, confirmpassword, errormessage } = this.state;
+    const { username, password, photoUrl,email, confirmpassword, errormessage } = this.state;
     //  console.log('Signup -> form submit', { username, password });
     if(username,password,confirmpassword) {
     if( password === confirmpassword) {
       if(photoUrl) {
-        this.props.signup({ username, password, photoUrl }); // props.signup is Provided by withAuth() and Context API
+        this.props.signup({ username, password, photoUrl,email }); // props.signup is Provided by withAuth() and Context API
         this.props.history.push('/home')
       } else {
         this.setState({errormessage: 'Slow down! Wait for the photo to load'})
@@ -45,7 +45,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password, confirmpassword } = this.state;
+    const { username, password,email, confirmpassword } = this.state;
     return (
       <div> 
       <h1 className = 'canaryheader'>Project Canary</h1>
@@ -60,7 +60,13 @@ class Signup extends Component {
             value={username}
             onChange={this.handleChange}
           />
-
+          <label>Email:</label>
+          <input
+            type="text"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
           <label>Password:</label>
           <input
             type="password"

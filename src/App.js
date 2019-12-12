@@ -4,8 +4,8 @@ import './App.css';
 
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Private from './pages/Home';
-
+import Home from './pages/Home';
+import AddQestion from './pages/AddQuestion';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -19,7 +19,8 @@ class App extends Component {
           <AnonRoute exact path="/" component={Login} />
           {/* <Route exact path = '/signup' component ={Signup} />
           <Route exact path = '/' component ={Login} /> */}
-          <PrivateRoute path="/home" component={Private} />
+          <PrivateRoute path="/home" component={Home} />
+          <PrivateRoute exact path="/addquestion" component = {AddQestion} />
           {/* <Route exact path = '/home' component = {Private} /> */}
         </Switch>
       </div>

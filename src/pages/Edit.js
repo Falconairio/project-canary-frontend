@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 import authService from '../lib/auth-service'
+import { withRouter } from 'react-router';
 
 class Edit extends Component {
-    state = { username: '', email:'', oldpassword: '', photoUrl: '', password: '',confirmpassword: '', errormessage: ''};
+    state = { username: '', email:'', oldpassword: '', photoUrl: '', password: '',confirmpassword: '', errormessage: '', toggleedit:this.props.toggledit, history: this.props.history}
     componentDidMount() {
         console.log('in component did mount')
+        console.log(this.props)
     }
     handleFormSubmit = event => {
         event.preventDefault();
@@ -20,26 +22,26 @@ class Edit extends Component {
                 updated[thingkeys[i]] = thingvalues[i]
             }
         }
-        console.log(updated)
         if( password === confirmpassword) {
             this.props.update(updated); // props.signup is Provided by withAuth() and Context API
         } else {
           this.setState({errormessage: 'Enter the same password for both fields'})
         }
+        //this.props.edittoggle(event);
+        console.log('this is the handleformsubmit history',this.props.history)
+        this.props.history.push('/home')
       };
     handleChange = event => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
       };
       fileOnchange = (event) => {    
-        console.log(this.props)
         const file = event.target.files[0];
         const uploadData = new FormData()
         uploadData.append('photo', file)
     
         authService.changeImage(uploadData)
         .then((photoUrl) => {
-          console.log(photoUrl)
           this.setState({photoUrl})
         })
         .catch((error) => console.log(error))
@@ -108,7 +110,7 @@ class Edit extends Component {
                 <label>Preview:</label>
                     <div style = {{border: '2px solid black',height: '200px', width: '200px', backgroundImage: `url(${this.state.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '10px'}}></div>
                 </div>
-                <a onClick = {this.props.toggledit} href = ''>
+                <a onClick = {this.props.edittoggle} href = ''>
                     <img src={require('./../images/corner-up-left.svg')} alt='' />
                 </a>
                 </div>
@@ -116,4 +118,4 @@ class Edit extends Component {
         )
     }
 }
-export default withAuth(Edit);
+export default withRouter(withAuth(Edit));

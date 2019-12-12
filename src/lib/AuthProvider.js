@@ -13,12 +13,14 @@ const withAuth = WrappedComponent => {
       return (
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
-          {({ login, signup, user, logout, update, isLoggedin }) => {
+          {({ login, signup, user, logout, update, me, isLoggedin, deletee }) => {
             return (
               <WrappedComponent
+                deleteuser={deletee}
                 login={login}
                 signup={signup}
                 user={user}
+                me={me}
                 update={update}
                 logout={logout}
                 isLoggedin={isLoggedin}
@@ -66,10 +68,10 @@ class AuthProvider extends React.Component {
   }
 
   login = user => {
-    const { username, password } = user;
+    const { email, password } = user;
 
     authService
-      .login({ username, password })
+      .login({ email, password })
       .then(user => this.setState({ isLoggedin: true, user }))
       .catch(err => console.log(err));
   };
@@ -80,13 +82,25 @@ class AuthProvider extends React.Component {
       .then(() => this.setState({ isLoggedin: false, user: null }))
       .catch(err => console.log(err));
   };
+  deletee = () => {
+    authService
+      .delete()
+      .then(() => this.setState({ isLoggedin: false, user: null }))
+      .catch(err => console.log(err));
+  }
+  me = () => {
+    authService
+      .me()
+      .then((user) => this.setState({user:user}))
+      .catch(err => console.log(err));
+  }
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup, imageUpload, update, imageUpdate } = this;
-
+    const { login, logout, signup, imageUpload, update, me, deletee } = this;
+    console.log('this is the props',this.props)
     return (
-      <Provider value={{ isLoading, isLoggedin, user, login, logout, signup, update, imageUpload}}>
+      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee}}>
         {this.props.children}
       </Provider>
     );
