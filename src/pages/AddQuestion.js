@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../lib/AuthProvider'
 import authService from '../lib/auth-service'
+import { Link } from 'react-router-dom';
 
  class AddQuestion extends Component {
     state = {question:'', questionType:'', rightAnswer:'', wrongAnswer1:'',wrongAnswer2:'',wrongAnswer3:'',photoUrl:'',difficulty:'',errorMessage:''}
@@ -23,9 +24,10 @@ import authService from '../lib/auth-service'
     handleSubmit = e => {
         e.preventDefault();
         const {question, questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl} = this.state;
-        if (questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl) {
+        if (question, questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl) {
             const newQuestion = this.state;
             this.props.addQuestion(newQuestion);
+            this.props.history.push('/home')
         }
         else {
             this.setState({errorMessage:'All fields are mandatory'})
@@ -37,7 +39,12 @@ import authService from '../lib/auth-service'
         return (
             <div>
             <section className = 'addquestioncontainer'>
-                <h1>Add Question</h1>
+                <div className = 'addquestionheader'>
+                    <h1>Add Question</h1>
+                    <Link to='/home'>
+                        <img src={require('./../images/corner-up-left.svg')} alt='' />
+                    </Link>
+                </div>
                 <div className = 'addquestionoutterform'>
                     <div className = 'addquestionform'>
                         <div className = 'questioncolumn'>

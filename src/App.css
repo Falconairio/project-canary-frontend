@@ -392,8 +392,21 @@ input {
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 15px;
-  margin-left: 10px;
+  
   text-decoration: underline;
+}
+.addquestionheader {
+  margin-left: 10px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.addquestionheader img {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 10px;
+  display: flex;
+  align-self: flex-end;
 }
 .addquestionform {
   display: flex;
