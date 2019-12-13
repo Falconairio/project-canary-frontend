@@ -7,12 +7,12 @@ import Login from './desktop-pages/Login';
 import Home from './desktop-pages/Home';
 import AddQestion from './desktop-pages/AddQuestion';
 import CreateGame from './desktop-pages/CreateGame';
+import Game from './desktop-pages/Game';
+import EnterName from './mobile-pages/EnterName';
+import WaitingMobile from './mobile-pages/WaitingMobile';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
-import Game from './desktop-pages/Game';
-import EnterName from './mobile-pages/EnterName';
-
 
 class App extends Component {
   render() {
@@ -22,6 +22,7 @@ class App extends Component {
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/" component={Login} />
           <AnonRoute exact path = "/addplayer" component = {EnterName} />
+          <AnonRoute path = "/gamewaiting" component = {WaitingMobile} />
           {/* <Route exact path = '/signup' component ={Signup} />
           <Route exact path = '/' component ={Login} /> */}
           <PrivateRoute path="/home" component={Home} />

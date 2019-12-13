@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { thisExpression } from '@babel/types';
 
 export default class EnterName extends Component {
     state = {
@@ -46,8 +47,15 @@ export default class EnterName extends Component {
                     </div>
                 </div>
                 <div className = 'enterbutton'>
+                    {
+                    this.state.errormessage
+                    ?<p>{this.state.errormessage}</p>
+                    :null
+                    }
                     <button onClick = {this.handleFormSubmit}>Enter Game</button>
+                    
                 </div>
+                
             </div>
         )
     }

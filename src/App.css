@@ -606,3 +606,9 @@ input {
   height: 7vh;
   font-size: 5vw;
 }
+/*MOBILE WAITING PAGE STYLES*/
+.waitingmobilediv {
+  height: 80vh;
+  width: 80vw;
+  border: 2px solid black;
+}
