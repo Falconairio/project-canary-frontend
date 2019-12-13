@@ -10,6 +10,7 @@ import CreateGame from './pages/CreateGame';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
+import Game from './pages/Game';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute exact path="/addquestion" component = {AddQestion} />
           <PrivateRoute exact path= "/creategame" component = {CreateGame} />
+          <PrivateRoute path = '/game/:gameid' component = {Game} />
           {/* <Route exact path = '/home' component = {Private} /> */}
         </Switch>
       </div>

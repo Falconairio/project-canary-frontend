@@ -7,7 +7,7 @@ class Login extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password, errormessage,email } = this.state;
+    const { password ,email } = this.state;
     if(email && password) {
       this.props.login({ password, email });
       this.props.history.push('/home')
@@ -22,7 +22,7 @@ class Login extends Component {
   };
 
   render() {
-    const { username, password, errormessage, email } = this.state;
+    const { password, email } = this.state;
 
     return (
       <div className = 'logincontainer'>

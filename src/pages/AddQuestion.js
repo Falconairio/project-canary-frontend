@@ -35,7 +35,7 @@ import { Link } from 'react-router-dom';
     }
 
     render() {
-        const {question, questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl,difficulty,errorMessage} = this.state;
+        const {question, questionType, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3,photoUrl,difficulty} = this.state;
         return (
             <div>
             <section className = 'addquestioncontainer'>

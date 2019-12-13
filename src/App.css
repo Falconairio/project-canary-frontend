@@ -451,9 +451,10 @@ input {
   border: 2px solid black;
   background-color: white;
   width: 20vw;
-  height: 50vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
+  background-image: url('./paper.png');
 }
 .creategameheader {
   display: flex;
@@ -501,6 +502,15 @@ input {
   align-items: center;
   align-items: flex-end;
 }
+.createandstartbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 3vh
+}
+.createandstartbuttons button {
+  width: 40vw;
+}
 .checkboxdiv {
   display: flex;
   flex-direction: column;
@@ -513,3 +523,5 @@ input {
 #creategamebutton {
   margin-top: 20px;
 }
+/*WAITING SCREEN STYLES*/
+

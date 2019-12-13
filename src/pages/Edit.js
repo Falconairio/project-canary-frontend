@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from '../lib/AuthProvider';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import authService from '../lib/auth-service'
 import { withRouter } from 'react-router';
 

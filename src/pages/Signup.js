@@ -9,7 +9,7 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    const { username, password, photoUrl,email, confirmpassword, errormessage } = this.state;
+    const { username, password, photoUrl,email, confirmpassword } = this.state;
     //  console.log('Signup -> form submit', { username, password });
     if(username,password,confirmpassword) {
     if( password === confirmpassword) {

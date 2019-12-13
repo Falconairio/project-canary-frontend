@@ -55,6 +55,7 @@ class Home extends Component {
             <h1>Create a Game</h1>
           </Link>
           </div>
+          {/*{ eslint-disable-next-line} */}
           <a onClick = {this.props.logout}>
             <img src={require('./../images/exit.svg')} alt = '' className = 'exiticon'/>
           </a>
@@ -73,6 +74,7 @@ class Home extends Component {
                                 ?this.props.user.gamesWon.length :null}</p>
             </div>
             <div className = 'icondivbottom'>
+            {/*{ eslint-disable-next-line} */}
               <a onClick = {this.toggleedit} style = {{border:'none'}} href = ''>
                 <img src={require('./../images/edit.svg')} alt = '' className = 'editicon'/>
               </a>

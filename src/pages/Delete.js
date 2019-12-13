@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { withAuth } from '../lib/AuthProvider';
-import { Link } from 'react-router-dom';
-import authService from '../lib/auth-service'
 
 class Delete extends Component {
     render() {

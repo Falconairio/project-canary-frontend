@@ -3,8 +3,8 @@ import axios from 'axios';
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://192.168.1.63:5000',
-      // baseURL: 'http://localhost:5000',
+      // baseURL: 'http://192.168.1.63:5000',
+      baseURL: 'http://localhost:5000',
       withCredentials: true,
     });
   }
@@ -46,9 +46,13 @@ class Auth {
   logout() {
     return this.auth.post('/auth/logout', {}).then(response => response.data);
   }
+
   creategame(game) {
     const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = game;
-    return this.auth.post('/game', { numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
+    return this.auth
+      .post('/game', { numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
+        .then( (data) => data)
+        .catch( (err) => console.log(err));
   }
   me() {
     return this.auth.get('/auth/me').then(response => response.data);

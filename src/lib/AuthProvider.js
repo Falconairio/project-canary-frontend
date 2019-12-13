@@ -1,6 +1,7 @@
 //	lib/AuthProvider.js
 
 import React from 'react';
+import { withRouter } from 'react-router';
 import authService from './auth-service'; // IMPORT functions for axios requests to API
 const { Consumer, Provider } = React.createContext();
 
@@ -13,9 +14,10 @@ const withAuth = WrappedComponent => {
       return (
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
-          {({ login, signup, user, logout, update, me, isLoggedin, deletee, addQuestion }) => {
+          {({ login, signup, user, logout, update, me, isLoggedin, deletee, addQuestion, game, creategame }) => {
             return (
               <WrappedComponent
+                creategame={creategame}
                 deleteuser={deletee}
                 login={login}
                 signup={signup}
@@ -25,6 +27,7 @@ const withAuth = WrappedComponent => {
                 logout={logout}
                 isLoggedin={isLoggedin}
                 addQuestion={addQuestion}
+                game = {game}
                 {...this.props}
               />
             );
@@ -104,17 +107,20 @@ class AuthProvider extends React.Component {
     const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = data
     authService
       .creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
-        .then( (data) => this.setState({game:data}))
+        .then( (datae) => {
+          console.log('this is the data in authprovider',datae.data)
+          this.setState({game: datae.data})
+        })
         .catch( (err) => console.log(err));
+        
   }
 
 
   render() {
     const { isLoading, isLoggedin, user, game } = this.state;
-    const { login, logout, signup, imageUpload, update, me, deletee, addQuestion } = this;
-    console.log('this is the props',this.props)
+    const { login, logout, signup, imageUpload, update, me, deletee, addQuestion, creategame } = this;
     return (
-      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee, addQuestion}}>
+      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee, addQuestion,game,creategame}}>
         {this.props.children}
       </Provider>
     );
@@ -123,4 +129,4 @@ class AuthProvider extends React.Component {
 
 export { Consumer, withAuth };
 
-export default AuthProvider;
+export default withRouter(AuthProvider);

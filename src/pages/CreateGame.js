@@ -15,19 +15,24 @@ class CreateGame extends Component {
         this.setState({ [name]: value });
       };
       handleFormSubmit = event => {
+          console.log(this.state)
         event.preventDefault();
         const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = this.state;
-        if(webdevcheck !== false && datanylcheck !== false && uxcheck !== false) {
-            if(numberofquestions, name) {
-                this.props.creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name });
-                this.props.history.push('/home')
+        if(webdevcheck === true || datanylcheck === true || uxcheck === true) {
+            if(numberofquestions,name) {
+                this.props.creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
+                this.setState({errormessage: 'Game Created! Press Start'})
             } else {
             this.setState({errormessage:'Enter a name'})
             }
         } else {
             this.setState({errormessage:'Select at least one question type'})
         }
-      };
+      }
+      startGame = event => {
+          event.preventDefault();
+          this.props.history.push(`/game/${this.props.game._id}`)
+      }
       multiselect = event => {
         const { value } = event.target;
         this.setState({ numberofquestions: value });
@@ -57,9 +62,9 @@ class CreateGame extends Component {
                     <div className = 'noquestions'>
                         <label>Number of Questions:</label>
                         <select name="questionType" value={numberofquestions} onChange={this.multiselect} className='multiselect'>
-                            <option value= "5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">15</option>
+                            <option value= "6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
                         </select>
                     </div>
                     <div className = 'checkboxdiv'>
@@ -86,7 +91,10 @@ class CreateGame extends Component {
                         onChange = {this.checkBox}
                             />
                     </div>
-                    <button className='buttonn' id = 'creategamebutton' onClick = {this.handleFormSubmit}>Create Game</button>
+                    <div className = 'createandstartbuttons'>
+                        <button className='buttonn' onClick = {this.handleFormSubmit}>Create Game</button>
+                        <button className='buttonn' onClick = {this.startGame}>Start Game</button>
+                    </div>
                 </form>
             </div>
         )
