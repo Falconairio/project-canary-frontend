@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 
 class CreateGame extends Component {
     state = {
-        numberofquestions: 5,
+        numberofquestions: 6,
         webdevcheck: false,
         datanylcheck: false,
         uxcheck: false,
-        name: ''
+        name: '',
+        errormessage: ''
     }
     handleChange = event => {
         const { name, value } = event.target;
@@ -30,8 +31,13 @@ class CreateGame extends Component {
         }
       }
       startGame = event => {
-          event.preventDefault();
-          this.props.history.push(`/game/${this.props.game._id}`)
+        event.preventDefault();
+          if(this.props.game) {
+            this.props.history.push(`/game/${this.props.game._id}`)
+            console.log(this.props.game)
+          } else {
+              this.setState({errormessage: 'Game has not been created'})
+          }
       }
       multiselect = event => {
         const { value } = event.target;
@@ -96,6 +102,11 @@ class CreateGame extends Component {
                         <button className='buttonn' onClick = {this.startGame}>Start Game</button>
                     </div>
                 </form>
+                {
+                    this.state.errormessage
+                    ?<p>{this.state.errormessage}</p>
+                    :null
+                }
             </div>
         )
     }

@@ -451,7 +451,7 @@ input {
   border: 2px solid black;
   background-color: white;
   width: 20vw;
-  height: 55vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   background-image: url('./paper.png');
@@ -525,3 +525,25 @@ input {
 }
 /*WAITING SCREEN STYLES*/
 
+.qrcodediv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  text-align: center;
+  width: 35vw;
+  height: 35vw;
+}
+.qrcodediv img {
+  width: 30vw;
+  height: 30vw;
+  padding-bottom: 10px;
+}
+.qrcodediv h1 {
+  font-size: 3vh;
+  margin-bottom: 10px;
+}
+.playernames {
+  
+}
