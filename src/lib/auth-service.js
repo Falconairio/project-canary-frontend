@@ -46,6 +46,13 @@ class Auth {
   logout() {
     return this.auth.post('/auth/logout', {}).then(response => response.data);
   }
+  addplayer(player) {
+    const { username, bootcamp, gameId } = player;
+    return this.auth
+      .post('player/addplayer',{player})
+      .then(({data}) => data)
+      .catch((err) => console.log(err))
+  }
 
   creategame(game) {
     const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = game;

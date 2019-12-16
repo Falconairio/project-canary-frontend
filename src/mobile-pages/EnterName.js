@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
 import { thisExpression } from '@babel/types';
+import { withAuth } from '../lib/AuthProvider';
+import { connect } from './../api'
 
-export default class EnterName extends Component {
+class EnterName extends Component {
     state = {
-        name: '',
+        username: '',
         bootcamp: 'other',
         errormessage: '',
     }
     handleFormSubmit = event => {
         event.preventDefault();
-        const { name ,bootcamp } = this.state;
-        if(name) {
-          this.props.addplayer({ name,bootcamp });
-          this.props.history.push('/home')
+        const { username ,bootcamp } = this.state;
+        if(username) {
+        let path = this.props.history.location.pathname;
+        let gameId = path.substring(path.indexOf('=') + 1, path.length)
+        this.props.addplayer({ username,bootcamp, gameId });
+        setTimeout(() => {
+            this.props.history.push(`/game/id=${gameId}`)
+            connect(this.props.player._id, gameId);
+        } ,3000)
         } else {
           this.setState({errormessage:'Enter a name'})
           }
@@ -22,7 +29,7 @@ export default class EnterName extends Component {
         this.setState({ [name]: value });
       };
     render() {
-        const { name, bootcamp } = this.state
+        const { username, bootcamp } = this.state
         return (
             <div className = 'enternamediv'>
                 <div className = 'playerformfields'>
@@ -31,8 +38,8 @@ export default class EnterName extends Component {
                         <label>Enter Name:</label>
                         <input
                             type="text"
-                            name="name"
-                            value={name}
+                            name="username"
+                            value={username}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -60,3 +67,5 @@ export default class EnterName extends Component {
         )
     }
 }
+
+export default withAuth(EnterName)

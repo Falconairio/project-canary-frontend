@@ -33,8 +33,9 @@ class CreateGame extends Component {
       startGame = event => {
         event.preventDefault();
           if(this.props.game) {
-            this.props.history.push(`/game/${this.props.game._id}`)
-            console.log(this.props.game)
+             this.props.history.push(`/game/desktop/id=${this.props.game._id}`)
+            //this.props.history.push(`/addquestion`)
+            console.log('this is the game',this.props.game)
           } else {
               this.setState({errormessage: 'Game has not been created'})
           }

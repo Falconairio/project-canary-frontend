@@ -68,6 +68,9 @@ input {
   font-family: 'Patrick Hand', cursive;
   padding-left: 10px
 }
+
+/*//////////////////////////////////////////MOBILE VIWS/////////////////////////////////////////*/
+
 /*LOGIN PAGE STYLES */
 
 .logincontainer h1 {
@@ -611,4 +614,34 @@ input {
   height: 80vh;
   width: 80vw;
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.waitingmobilediv h1 {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  font-size: 9vw;
+}
+.playerslist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.playerslist h2 {
+  font-size: 7vw;
+}
+.playersmobile { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50vw;
+}
+.playersmobile li {
+  margin-top: 10vw;
+  font-size: 5vw;
+}
+/*QUESTION SCREEN MOBILE*/
+

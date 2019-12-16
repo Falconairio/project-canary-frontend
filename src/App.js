@@ -9,10 +9,10 @@ import AddQestion from './desktop-pages/AddQuestion';
 import CreateGame from './desktop-pages/CreateGame';
 import Game from './desktop-pages/Game';
 import EnterName from './mobile-pages/EnterName';
-import WaitingMobile from './mobile-pages/WaitingMobile';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
+import GameMobile from './mobile-pages/GameMobile';
 
 class App extends Component {
   render() {
@@ -21,14 +21,14 @@ class App extends Component {
         <Switch>
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/" component={Login} />
-          <AnonRoute exact path = "/addplayer" component = {EnterName} />
-          <AnonRoute path = "/gamewaiting" component = {WaitingMobile} />
+          <AnonRoute exact path = "/entername/:id" component = {EnterName} />
+          <AnonRoute exact path = "/game/:id" component = {GameMobile} />
           {/* <Route exact path = '/signup' component ={Signup} />
           <Route exact path = '/' component ={Login} /> */}
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute exact path="/addquestion" component = {AddQestion} />
           <PrivateRoute exact path= "/creategame" component = {CreateGame} />
-          <PrivateRoute path = '/game/:gameid' component = {Game} />
+          <PrivateRoute path = '/game/desktop/:id' component = {Game} />
           {/* <Route exact path = '/home' component = {Private} /> */}
         </Switch>
       </div>
