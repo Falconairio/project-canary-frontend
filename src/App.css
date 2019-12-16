@@ -68,6 +68,9 @@ input {
   font-family: 'Patrick Hand', cursive;
   padding-left: 10px
 }
+* {
+  zoom: 100%;
+}
 
 /*//////////////////////////////////////////MOBILE VIWS/////////////////////////////////////////*/
 
@@ -80,6 +83,7 @@ input {
 .buttonn {
   display: flex;
   align-self: center;
+  align-items: center;
   text-align: center;
   width: 120px;
   height: 35px;
@@ -282,16 +286,16 @@ input {
 /*EDIT POPUP STYLES*/
 
 .editcontainer {
-  width: 50vw;
+  width: 60vw;
   border: 2px solid black;
-  height: 40vh;
+  height: 50vh;
   display: flex;
   flex-direction: row;
   position: absolute;
   align-self: center;
   justify-self: center;
   background-color: white; 
-  margin-left: 22.5vw; 
+  margin-left: 20vw; 
   margin-top: 8.5vh;
 }
 .editcontainer h1 {
@@ -550,6 +554,34 @@ input {
 .playernames {
 
 }
+
+/*QUESTION STYLES*/
+
+.desktopquestion {
+  width: 100vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+}
+
+.questiontop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.questiontop h1 {
+  font-size: 6vw;
+}
+.questiontop h2 {
+  font-size: 3vw;
+  font-weight: lighter;
+  margin-top: 3vh;
+}
 /*//////////////////////////////////////////MOBILE VIWS/////////////////////////////////////////*/
 
 /*ENTERNAME STYLES*/
@@ -619,8 +651,8 @@ input {
   align-items: center;
 }
 .waitingmobilediv h1 {
-  margin-top: 10vh;
-  margin-bottom: 5vh;
+  margin-top: 10vw;
+  margin-bottom: 5vw;
   font-size: 9vw;
 }
 .playerslist {

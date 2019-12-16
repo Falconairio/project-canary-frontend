@@ -50,10 +50,32 @@ error = null;
 socket.open();
 };
 
+const desktopconnect = (userid,gameid) => {
+    let error = null;
+
+    socket = openSocket(socketUrl, {
+    autoConnect: false,
+    });
+
+    socket.on('connect', () => {
+    console.log(socketUrl);
+    console.log('Connected');
+
+    socket.emit('authentication', {
+    _id: userid,
+    gameId: gameid
+    });
+    });
+    }
+
 const disconnect = () => {
-socket.disconnect();
+    socket.disconnect();
+}
+
+const desktopdisconnect = () => {
+    socket.emit('killconnection')
 }
 
 
 
-export { connect, disconnect }
+export { connect, disconnect, desktopconnect }
