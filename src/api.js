@@ -63,9 +63,23 @@ const desktopconnect = (userid,gameid) => {
 
     socket.emit('authentication', {
     _id: userid,
-    gameId: gameid
+    gameId: gameid,
+    user: true
     });
     });
+    socket.on('unauthorized', (reason) => {
+        console.log('Unauthorized:', reason);
+        
+        error = reason.message;
+        
+        socket.disconnect();
+        });
+        
+        socket.on('disconnect', (reason) => {
+        console.log(`Disconnected: ${error || reason}`);
+        error = null;
+        });
+    socket.open();
     }
 
 const disconnect = () => {
@@ -76,6 +90,14 @@ const desktopdisconnect = () => {
     socket.emit('killconnection')
 }
 
+const getplayers = (cb, gameId) => {
+    socket.on('send-list-of-players',player => cb(player))
+    socket.emit('get-list-of-players', gameId);
+}
 
+function subscribeToTimer(cb) {
+    socket.on('timer', timestamp => cb(null, timestamp));
+    socket.emit('subscribeToTimer', 3000);
+  }
 
-export { connect, disconnect, desktopconnect }
+export { connect, disconnect, desktopconnect, getplayers }

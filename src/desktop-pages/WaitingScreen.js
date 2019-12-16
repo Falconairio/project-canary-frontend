@@ -3,22 +3,25 @@ import { withAuth } from '../lib/AuthProvider'
 
 class WaitingScreen extends Component {
     state = {
-        players: this.props.game.players
+        players: this.props.players
+    }
+    componentDidMount() {
+        console.log(this.props)
     }
     render() {
         return (
             <div className = 'waitingscreencontainer'>
-                <div>
+                <div className = 'waitingtostartdesktop'>
                     <h1>Waiting to start...</h1>
                     <button>Start</button>
                 </div>
 
-                <div>
-                    <div>
+                <div className = 'waitingdesktopbottom'>
+                    <div className = 'playerslistdesktopcontainer'>
                         <h1>Players</h1>
                         <div className = 'playernames'>
                             {this.state.players.map(player => {
-                                return <p>{player.name}</p>
+                                return <p>{player}</p>
                             })}
                         </div>
                     </div>

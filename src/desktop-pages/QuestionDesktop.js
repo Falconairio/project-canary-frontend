@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class QuestionMobile extends Component {
+export default class QuestionDesktop extends Component {
 
     state = {
         imageUrl: 'https://res.cloudinary.com/dubdb3j5z/image/upload/c_scale,w_338/v1576186499/canary/nctx5dynk6aonqrwtrm7.jpg',
@@ -28,10 +28,25 @@ export default class QuestionMobile extends Component {
                         <h2>{this.state.question}</h2>
                     </div>
                     <div className = 'labelwithpreview'>
-                        <div style = {{border: '2px solid black',height: '200px', width: '200px', backgroundImage: `url(${this.state.imageUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '10px'}}></div>
+                        <div style = {{border: '2px solid black',height: '20vw', width: '30vw', backgroundImage: `url(${this.state.imageUrl})`,backgroundPosition:'center top', backgroundSize:'cover', marginBottom: '10px'}}></div>
                     </div>
                 </div>
-                <div></div>
+                <div className = 'answerbuttonsdesktop'>
+                    {
+                        this.state.answers
+                        ?
+                            this.state.answers.map((answer) => {
+                                return <button
+                                            name = {answer}
+                                            value = {answer}
+                                            onClick = {this.makeAnswer}
+                                            className = 'answerbutton'
+                                        >{answer}</button>
+                            })
+                        : 
+                            null
+                    }
+                </div>
             </div>
         )
     }

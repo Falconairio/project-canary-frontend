@@ -551,10 +551,39 @@ input {
   font-size: 3vh;
   margin-bottom: 10px;
 }
-.playernames {
-
+.waitingdesktopbottom {
+  display: flex;
+  justify-content: space-between;
 }
-
+.playerslistdesktopcontainer {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  width: 40vw;
+  margin-right: 5vw;
+}
+.playerslistdesktopcontainer h1 {
+  font-size: 3vw;
+}
+.waitingtostartdesktop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3vw;
+}
+.waitingtostartdesktop button {
+  border: 2px solid black;
+  background-color: white;
+  width: 20vw;
+  height: 3vw;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 2vw;
+  margin-top: 2vw;
+}
+.waitingtostartdesktop h1 {
+  font-size: 4vw;
+}
 /*QUESTION STYLES*/
 
 .desktopquestion {
@@ -582,6 +611,63 @@ input {
   font-weight: lighter;
   margin-top: 3vh;
 }
+.answerbuttonsdesktop {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+.answerbutton {
+  margin-top: 3vh;
+  border: 4px solid black;
+  width: 35vw;
+  height: 10vw;
+  background-color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 2rem;
+  border-radius: 5px;
+  line-height: 30px;
+}
+/*RESULT STYLES*/
+
+.playerresultelement {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.scoreboarddesktop {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  height: 80vh;
+  width: 30vw;
+}
+.scoreboarddesktop h1 {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 3vw;
+}
+.scoreboarddesktop ol {
+  font-size: 2vw;
+  height: 55vh;
+}
+.scoreboarddesktop li {
+  margin-bottom: 2vh;
+}
+.scoreboardbutton {
+  border: 2px solid black;
+  background-color: white;
+  font-family: 'Patrick Hand', cursive;
+  width: 10vw;
+  height: 3vw;
+  font-size: 1.9vw;
+}
+
 /*//////////////////////////////////////////MOBILE VIWS/////////////////////////////////////////*/
 
 /*ENTERNAME STYLES*/
