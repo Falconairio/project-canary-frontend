@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { disconnect } from './../api'; 
+import { withAuth } from '../lib/AuthProvider';
 
 class WaitingMobile extends Component {
     state = {
         // players: this.props.game.players
         players: ['Griffith','Johann','Pablo','Uros','Stephan','Sam','Jakub','Rem']
     }
-    
+    quitgame = () => {
+        disconnect();
+        this.setState({players: 'You have been disconnected'})
+    }
     render() {
         return (
             <div className = 'waitingmobilediv'>
@@ -25,8 +29,9 @@ class WaitingMobile extends Component {
                         }
                     </ul>
                 </div>
+                <button className = 'buttonn' onClick = {this.quitgame}>Quit</button>
             </div>
         )
     }
 }
-export default WaitingMobile
+export default withAuth(WaitingMobile)
