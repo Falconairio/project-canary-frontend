@@ -19,7 +19,7 @@ class Game extends Component {
             players: [],
             gameId: null,
             gamemaster: null,
-            that: this
+            questionnumber: 1,
     }
 }
     togglewaiting = event => {
@@ -34,8 +34,9 @@ class Game extends Component {
         let path = this.props.history.location.pathname;
         let gameId = path.substring(path.indexOf('=') + 1, path.length)
         desktopconnect(this.props.user._id, gameId, (question) => {
-            this.setState( {question: question.question} )
-            console.log(this.state)
+            this.setState( {question: question.question, questionnumber: this.state.questionnumber + 1} )
+        }, (players) => {
+            this.setState( {players} )
         });
         getplayers((players) => {
             this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
@@ -47,7 +48,7 @@ class Game extends Component {
         this.setState({ gameId })
     }
     componentDidUpdate(prevprops,prevstate) {
-        if(prevstate.question !== this.state.question) {
+        if(prevstate.players !== this.state.players) {
             console.log('foo')
         }
     }
@@ -67,6 +68,7 @@ class Game extends Component {
                     this.state.questiontoggle
                     ?<QuestionDesktop
                         question = {this.state.question}
+                        questionnumber = {this.state.questionnumber}
                         />
                     :null
                 }

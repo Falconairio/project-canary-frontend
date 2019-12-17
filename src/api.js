@@ -3,11 +3,11 @@ import openSocket from 'socket.io-client';
 // let socketUrl = 'http://192.168.1.63:9000'
 
 const socketUrl = 'http://192.168.1.63:9000';
-// const socketUrl = 'http://localhost:9000';
+// const socketUrl = 'http://localhost:3000';
 
 let socket;
 
-const connect = (playerid,gameid,cb) => {
+const connect = (playerid, gameid, questioncb) => {
 let error = null;
 
 socket = openSocket(socketUrl, {
@@ -24,16 +24,14 @@ gameId: gameid
 });
 });
 
-// var clients = openSocket.sockets.adapter.rooms[gameid].sockets;  
+// socket.on('game-started', (question) => questioncb );
 
-console.log(socket)
+socket.on('new-question', (question) => questioncb)
 
-socket.on('game-started', () => cb());
-socket.on('new-question', () => {
-console.log('new Question');
-//socket.emit('answer', {answer:answer.value,question:question.innerHTML, id:id});
-socket.emit('answer', {answer:'Respuesta'});
-});
+// socket.on('new-question', () => {
+//     //socket.emit('answer', {answer:answer.value,question:question.innerHTML, id:id});
+//     socket.emit('answer', {answer:'Respuesta'});
+// });
 
 socket.on('unauthorized', (reason) => {
 console.log('Unauthorized:', reason);
@@ -51,7 +49,7 @@ error = null;
 socket.open();
 };
 
-const desktopconnect = (userid,gameid, cb) => {
+const desktopconnect = (userid,gameid, questioncb, playercb) => {
     let error = null;
 
     socket = openSocket(socketUrl, {
@@ -69,8 +67,10 @@ const desktopconnect = (userid,gameid, cb) => {
     });
     socket.on('new-question', (question) => {
         console.log(question)
-        cb(question)
+        questioncb(question)
     })
+    socket.on('send-list-of-players',player => playercb(player))
+
     socket.on('unauthorized', (reason) => {
         console.log('Unauthorized:', reason);
         
@@ -99,7 +99,7 @@ const getplayers = (cb, gameId) => {
     socket.emit('get-list-of-players', gameId);
 }
 const sendanswer = (questionNumber, answerRight) => {
-     socket.emit('answer', 1,answerRight)
+     socket.emit('answer', questionNumber,answerRight)
     console.log(1,answerRight)
 }
 

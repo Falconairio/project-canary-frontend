@@ -9,7 +9,7 @@ class GameMobile extends Component {
     state = {
         waitingtoggle: false,
         questiontoggle: false,
-        questionnumber: 1,
+        questionnumber: 0,
         question: {},
         results: [],
         players: [],
@@ -20,7 +20,7 @@ class GameMobile extends Component {
             let path = this.props.history.location.pathname;
             let gameId = path.substring(path.indexOf('=') + 1, path.length)
             connect(this.props.player._id, gameId, ((question) => {
-                this.setState({questiontoggle:true, waitingtoggle: false, question})
+                this.setState({questiontoggle:true, waitingtoggle: false, question, questionnumber: this.state.questionnumber + 1})
             }));
             this.setState({ questiontoggle: false, waitingtoggle: true, gameId})
     }
@@ -36,7 +36,10 @@ class GameMobile extends Component {
                 }
                 {
                     this.state.questiontoggle 
-                    ?<QuestionMobile />
+                    ?<QuestionMobile
+                        question = {this.state.question}
+                        questionnumber = {this.state.questionnumber}
+                         />
                     :null
                 }
             </div>

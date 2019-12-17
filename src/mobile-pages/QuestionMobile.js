@@ -3,16 +3,13 @@ import { sendanswer } from './../api'
 
 export default class QuestionMobile extends Component {
     state = {
-        rightanswer: 'yes',
-        wronganswer1: 'no',
-        wronganswer2: 'maybe',
-        wronganswer3: 'possibly',
+        question: this.props.question,
         answers: [],
         answertoggle: true,
         recievedtoggle: false,
     }
     componentDidMount() {
-        let answersarray = [this.state.rightanswer,this.state.wronganswer1,this.state.wronganswer2,this.state.wronganswer3]
+        let answersarray = [this.state.question.rightAnswer,this.state.question.wrongAnswer1,this.state.question.wrongAnswer2,this.state.question.wrongAnswer3]
         answersarray.sort(function() {
             return .5 - Math.random();
           });
@@ -22,7 +19,7 @@ export default class QuestionMobile extends Component {
         event.preventDefault();
         const answer = event.target.value;
         let answerRight;
-        if(answer === this.state.rightanswer) {
+        if(answer === this.state.question.rightanswer) {
             answerRight = true;
         } else {
             answerRight = false;
@@ -30,6 +27,18 @@ export default class QuestionMobile extends Component {
         sendanswer(this.props.questionnumber,answerRight);
         this.setState({answertoggle : false, recievedtoggle: true})
     }
+    
+    componentDidUpdate(prevprops) {
+        if(prevprops.question !== this.props.question) {
+            this.setState({question: this.props.question, questionnumber: this.props.questionnumber})
+            let answersarray = [this.state.question.rightAnswer,this.state.question.wrongAnswer1,this.state.question.wrongAnswer2,this.state.question.wrongAnswer3]
+            answersarray.sort(function() {
+            return .5 - Math.random();
+          });
+        this.setState({answers: answersarray})
+        }
+    }
+
     render() {
         return (
             <div className = 'questionmobile'>
