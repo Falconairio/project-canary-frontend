@@ -103,7 +103,7 @@ const getplayers = (cb, gameId) => {
     socket.emit('get-list-of-players', gameId);
 }
 const sendanswer = (questionNumber, answerRight) => {
-     socket.emit('answer', questionNumber,answerRight)
+     socket.emit('answer', {questionNumber,answerRight})
 }
 
 // EXAMPLE
