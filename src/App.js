@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute';
 import GameMobile from './mobile-pages/GameMobile';
 import QuestionDesktop from './desktop-pages/QuestionDesktop';
 import Results from './desktop-pages/Results';
+import QuestionMobile from './mobile-pages/QuestionMobile';
 
 class App extends Component {
   render() {
@@ -32,8 +33,8 @@ class App extends Component {
           <PrivateRoute exact path= "/creategame" component = {CreateGame} />
           <PrivateRoute path = '/game/desktop/:id' component = {Game} />
           {/* <Route exact path = '/home' component = {Private} /> */}
-          <Route exact path = '/questionmobile' component = {QuestionDesktop} />
-          <Route exact path = '/results' component = {Results} />
+          {/* <Route exact path = '/questionmobile' component = {QuestionMobile} />
+          <Route exact path = '/results' component = {Results} /> */}
         </Switch>
       </div>
     );

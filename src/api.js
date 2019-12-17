@@ -3,10 +3,11 @@ import openSocket from 'socket.io-client';
 // let socketUrl = 'http://192.168.1.63:9000'
 
 const socketUrl = 'http://192.168.1.63:9000';
+// const socketUrl = 'http://localhost:9000';
 
 let socket;
 
-const connect = (playerid,gameid) => {
+const connect = (playerid,gameid,cb) => {
 let error = null;
 
 socket = openSocket(socketUrl, {
@@ -27,7 +28,7 @@ gameId: gameid
 
 console.log(socket)
 
-socket.on('game-started', () => console.log('game started'));
+socket.on('game-started', () => cb());
 socket.on('new-question', () => {
 console.log('new Question');
 //socket.emit('answer', {answer:answer.value,question:question.innerHTML, id:id});
@@ -50,7 +51,7 @@ error = null;
 socket.open();
 };
 
-const desktopconnect = (userid,gameid) => {
+const desktopconnect = (userid,gameid, cb) => {
     let error = null;
 
     socket = openSocket(socketUrl, {
@@ -58,7 +59,6 @@ const desktopconnect = (userid,gameid) => {
     });
 
     socket.on('connect', () => {
-    console.log(socketUrl);
     console.log('Connected');
 
     socket.emit('authentication', {
@@ -67,6 +67,10 @@ const desktopconnect = (userid,gameid) => {
     user: true
     });
     });
+    socket.on('new-question', (question) => {
+        console.log(question)
+        cb(question)
+    })
     socket.on('unauthorized', (reason) => {
         console.log('Unauthorized:', reason);
         
@@ -94,10 +98,14 @@ const getplayers = (cb, gameId) => {
     socket.on('send-list-of-players',player => cb(player))
     socket.emit('get-list-of-players', gameId);
 }
+const sendanswer = (questionNumber, answerRight) => {
+     socket.emit('answer', 1,answerRight)
+    console.log(1,answerRight)
+}
 
 function subscribeToTimer(cb) {
     socket.on('timer', timestamp => cb(null, timestamp));
     socket.emit('subscribeToTimer', 3000);
   }
 
-export { connect, disconnect, desktopconnect, getplayers }
+export { connect, disconnect, desktopconnect, getplayers, sendanswer }

@@ -47,6 +47,7 @@ class Auth {
     return this.auth.post('/auth/logout', {}).then(response => response.data);
   }
   addplayer(player) {
+    console.log(player)
     const { username, bootcamp, gameId } = player;
     return this.auth
       .post('player/addplayer',{player})
@@ -66,6 +67,9 @@ class Auth {
   }
   addQuestion(questionData) {
     return this.auth.post('/profile/addquestion',questionData)
+  }
+  startgame(gameId) {
+    return this.auth.patch('/game/start-game',{gameId})
   }
 }
 

@@ -3,17 +3,18 @@ import { withAuth } from '../lib/AuthProvider'
 
 class WaitingScreen extends Component {
     state = {
-        players: this.props.players
+        players: [],
+        gamemaster: null,
     }
     componentDidMount() {
-        console.log(this.props)
+        this.setState( {players: this.props.players, gamemaster: this.props.gamemaster} )
     }
     render() {
         return (
             <div className = 'waitingscreencontainer'>
                 <div className = 'waitingtostartdesktop'>
                     <h1>Waiting to start...</h1>
-                    <button>Start</button>
+                    <button onClick = {this.props.toggle}>Start</button>
                 </div>
 
                 <div className = 'waitingdesktopbottom'>
@@ -30,7 +31,7 @@ class WaitingScreen extends Component {
                         <img src = {this.props.game.qrCode} />
                     </div>
                 </div>
-                
+                <p>{this.state.gamemaster}'s Game</p>
             </div>
         )
     }

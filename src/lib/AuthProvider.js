@@ -14,9 +14,10 @@ const withAuth = WrappedComponent => {
       return (
         <Consumer>
           {/* <Consumer> component provides callback which receives Providers "value" object */}
-          {({ login, signup, user, logout, update, me, isLoggedin, deletee, addQuestion, game, creategame, addplayer, player }) => {
+          {({ login, signup, user, logout, update, me, isLoggedin, deletee, addQuestion, game, creategame, addplayer, player, startgame }) => {
             return (
               <WrappedComponent
+                startgame = {startgame}
                 player = {player}
                 addplayer = {addplayer}
                 creategame={creategame}
@@ -110,7 +111,6 @@ class AuthProvider extends React.Component {
     authService
       .addplayer({ username, bootcamp, gameId })
       .then((data) => {
-        console.log(data)
         this.setState({player: data})
       })
   }
@@ -125,13 +125,19 @@ class AuthProvider extends React.Component {
         .catch( (err) => console.log(err));
         
   }
+  startgame = (gameId) => {
+    authService
+      .startgame(gameId)
+      .then( (data) => console.log(data))
+      .catch( (err) => console.log(err));
+  }
 
 
   render() {
     const { isLoading, isLoggedin, user, game, player } = this.state;
-    const { login, logout, signup, imageUpload, update, me, deletee, addQuestion, creategame, addplayer } = this;
+    const { login, logout, signup, imageUpload, update, me, deletee, addQuestion, creategame, addplayer, startgame } = this;
     return (
-      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee, addQuestion,game,creategame, addplayer, player}}>
+      <Provider value={{ isLoading, isLoggedin, user, me, login, logout, signup, update, imageUpload, deletee, addQuestion,game,creategame, addplayer, player, startgame}}>
         {this.props.children}
       </Provider>
     );

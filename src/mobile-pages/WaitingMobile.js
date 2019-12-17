@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
-import { disconnect } from './../api'; 
+import { disconnect,getplayers } from './../api'; 
 import { withAuth } from '../lib/AuthProvider';
 
 class WaitingMobile extends Component {
     state = {
         // players: this.props.game.players
-        players: ['Griffith','Johann','Pablo','Uros','Stephan','Sam','Jakub','Rem']
+        players: []
+        
     }
     quitgame = () => {
         disconnect();
         this.setState({players: 'You have been disconnected'})
+    }
+    componentDidMount = () => {
+        getplayers((players) => {
+            this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
+        }, this.props.gameId)
     }
     render() {
         return (

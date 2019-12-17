@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { thisExpression } from '@babel/types';
 import { withAuth } from '../lib/AuthProvider';
-import { connect } from './../api'
+
 
 class EnterName extends Component {
     state = {
@@ -18,7 +18,6 @@ class EnterName extends Component {
         this.props.addplayer({ username,bootcamp, gameId });
         setTimeout(() => {
             this.props.history.push(`/game/id=${gameId}`)
-            connect(this.props.player._id, gameId);
         } ,3000)
         } else {
           this.setState({errormessage:'Enter a name'})
@@ -69,3 +68,5 @@ class EnterName extends Component {
 }
 
 export default withAuth(EnterName)
+
+
