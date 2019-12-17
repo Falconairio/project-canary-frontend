@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { disconnect,getplayers } from './../api'; 
+import { disconnect, getplayers } from './../api'; 
 import { withAuth } from '../lib/AuthProvider';
 
 class WaitingMobile extends Component {
@@ -16,6 +16,11 @@ class WaitingMobile extends Component {
         getplayers((players) => {
             this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
         }, this.props.gameId)
+    }
+    componentDidUpdate = (prevprops,prevstate) => {
+        if(prevprops.players !== this.state.players) {
+            this.setState({players: this.props.players})
+        }
     }
     render() {
         return (

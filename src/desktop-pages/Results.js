@@ -4,48 +4,14 @@ class Results extends Component {
     constructor(props) {
         super(props)
     this.state = {
-        players: [],
-        scoreboard:[{
-            name: 'aaaaaaaaa',
-            score: 1000
-        }, {
-            name: 'Johann',
-            score: 10000
-        },{
-            name: 'Uros',
-            score: 300
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        },{
-            name: 'Griffith',
-            score: 1000
-        }]
+        scoreboard:[]
     }
     }
     endgame = () => {
         this.props.history.push('/home');
     }
     componentDidMount() {
-        let sortedbyscore = this.state.scoreboard.sort((a,b) => (a.score < b.score) ? 1 : -1)
+        let sortedbyscore = this.props.players.sort((a,b) => (a.score < b.score) ? 1 : -1)
         this.setState({scoreboard: sortedbyscore})
     }
     render() {

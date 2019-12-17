@@ -16,6 +16,7 @@ import GameMobile from './mobile-pages/GameMobile';
 import QuestionDesktop from './desktop-pages/QuestionDesktop';
 import Results from './desktop-pages/Results';
 import QuestionMobile from './mobile-pages/QuestionMobile';
+import ResultMobile from './mobile-pages/ResultMobile';
 
 class App extends Component {
   render() {
@@ -35,6 +36,7 @@ class App extends Component {
           {/* <Route exact path = '/home' component = {Private} /> */}
           {/* <Route exact path = '/questionmobile' component = {QuestionMobile} />
           <Route exact path = '/results' component = {Results} /> */}
+          <Route path = '/resultsmobile' component = {ResultMobile} />
         </Switch>
       </div>
     );

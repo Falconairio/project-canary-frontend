@@ -19,7 +19,7 @@ class Game extends Component {
             players: [],
             gameId: null,
             gamemaster: null,
-            questionnumber: 1,
+            questionnumber: 0,
     }
 }
     togglewaiting = event => {
@@ -36,11 +36,12 @@ class Game extends Component {
         desktopconnect(this.props.user._id, gameId, (question) => {
             this.setState( {question: question.question, questionnumber: this.state.questionnumber + 1} )
         }, (players) => {
-            this.setState( {players} )
+            this.setState( {players: players.slice(1,players.length), gamemaster: players[0]} )
+        }, () => {
+            this.setState( { questiontoggle: false, resultstoggle: true } )
         });
         getplayers((players) => {
             this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
-
         }, gameId)
         setTimeout(() => {
             this.setState({ questiontoggle: false, waitingtoggle: true})
@@ -75,7 +76,7 @@ class Game extends Component {
                 {
                     this.state.resultstoggle
                     ?<Results
-                        results = { this.state.results }
+                        players = { this.state.players }
                         />
                     :
                         null

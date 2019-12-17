@@ -24,7 +24,7 @@ export default class QuestionDesktop extends Component {
     componentDidUpdate(prevprops) {
         if(prevprops.question !== this.props.question) {
             this.setState({question: this.props.question, questionnumber: this.props.questionnumber})
-            let answersarray = [this.state.question.rightAnswer,this.state.question.wrongAnswer1,this.state.question.wrongAnswer2,this.state.question.wrongAnswer3]
+            let answersarray = [this.props.question.rightAnswer,this.props.question.wrongAnswer1,this.props.question.wrongAnswer2,this.props.question.wrongAnswer3]
             answersarray.sort(function() {
             return .5 - Math.random();
           });
