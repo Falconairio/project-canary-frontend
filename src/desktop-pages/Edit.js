@@ -101,7 +101,7 @@ class Edit extends Component {
                                 />
                         </div>
                     </div>
-                    <button className = 'buttonn' onClick = {this.handleFormSubmit}>Submit</button>
+                    <button className = 'buttonn' id = 'submitbutton' onClick = {this.handleFormSubmit}>Submit</button>
                 </form>
                 </div>
                 <div className = 'previewandicon'>

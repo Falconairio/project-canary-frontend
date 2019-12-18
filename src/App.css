@@ -84,6 +84,7 @@ input {
   display: flex;
   align-self: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
   width: 120px;
   height: 35px;
@@ -372,7 +373,7 @@ input {
   margin-top: 17vh
 }
 .deletecontainer h1 {
-  font-size: 30px;
+  font-size: 2vw;
   margin-top: 10px;
   margin-bottom: 15px;
 }
@@ -385,7 +386,6 @@ input {
 .deletebuttons button {
   text-align: center;
   font-size: 15px;
-  padding-left: 30px;
 }
 /*ADDQUESTION STYLES*/
 
@@ -838,4 +838,8 @@ ol li:nth-child(1) {
 
 .resultsmobilescore {
   font-size: 7vw;
+}
+
+#submitbutton {
+  align-self: center;
 }
