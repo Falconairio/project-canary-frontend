@@ -13,7 +13,7 @@ class GameMobile extends Component {
         resulttoggle: false,
         questionnumber: 0,
         question: {},
-        results: [],
+        results: null,
         players: [],
         gameId: null,
     }
@@ -22,8 +22,12 @@ class GameMobile extends Component {
             let gameId = path.substring(path.indexOf('=') + 1, path.length)
             connect(this.props.player._id, gameId, ((question) => {
                 this.setState({questiontoggle:true, waitingtoggle: false, question: question.question, questionnumber: this.state.questionnumber + 1})
-            }), (() => {
-                this.setState( { waitingtoggle: false, questiontoggle: false, resulttoggle: true } )
+            }), ((results) => {
+                var result = results.find(obj => {
+                    return obj.username === this.props.player.username
+                  })
+                  console.log(result)
+                this.setState( { waitingtoggle: false, questiontoggle: false, resulttoggle: true, results: result } )
             }),(players) => {
                 console.log(players)
                 console.log(this.state)
@@ -53,7 +57,7 @@ class GameMobile extends Component {
                 {
                     this.state.resulttoggle
                     ?<ResultMobile 
-                        player = {this.props.player}
+                        player = {this.state.results}
                         />
                     :
                         null

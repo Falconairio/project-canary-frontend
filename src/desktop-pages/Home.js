@@ -51,8 +51,10 @@ class Home extends Component {
           <div>
           <Link to="/creategame" className ='creategamediv'>
             {' '}
+            <div>
             <img src={require('./../images/plus-square.svg')} alt = '' className = 'plusicon'/>
             <h1>Create a Game</h1>
+            </div>
           </Link>
           </div>
           {/*{ eslint-disable-next-line} */}
@@ -63,7 +65,7 @@ class Home extends Component {
         <div className = 'bottomdiv'>
           <div className = 'profilediv'>
             {/* <img src = {this.props.user.photoUrl} alt='' /> */}
-            <div style = {{borderRight: '2px solid black',height: '24.9vh',borderTop:'1px solid black', borderBottom:'1px solid black', width: '250px', backgroundImage: `url(${this.props.user.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover'}}></div>
+            <div style = {{borderRight: '2px solid black',height: '24.9vh', borderBottom:'1px solid black', width: '250px', backgroundImage: `url(${this.props.user.photoUrl})`,backgroundPosition:'center top', backgroundSize:'cover'}}></div>
             <div className = 'profiledivtext'>
               <div className = 'profiledivtextheader'>{this.props.user.username}
               <article>Rank: {this.state.Rank}</article>

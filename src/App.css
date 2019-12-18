@@ -115,6 +115,9 @@ input {
   box-shadow: none;
   border: 2px solid black;
 }
+#signupbutton {
+  padding-left: 2.7vw;
+}
 .loginorsignup {
   display: flex; 
   flex-direction: row;
@@ -207,10 +210,8 @@ input {
   flex-direction: row;
 }
 .plusicon {
-  height: 15  vw;
+  height: 15vw;
   width: 15vw;
-  display: flex;
-  align-self: flex-end;
 }
 .exiticon {
   height: 50px;
@@ -235,7 +236,7 @@ input {
 }
 .profilediv p {
   border: 2px solid black;
-  font-size: 40px;
+  font-size: 3vw;
   width: 27vw;
   padding-left: 10px;
 }
@@ -246,7 +247,7 @@ input {
   margin-left: 20px;
 }
 .profiledivtextheader {
-  font-size: 35px;
+  font-size: 3vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -261,14 +262,14 @@ input {
   margin-left: 30px;
   border: 2px solid black;
   height: 25vh;
-  width: 38vw;
+  width: 37.5vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 .addquestiondiv h1 {
-  font-size: 40px;
+  font-size: 3vw;
   text-decoration: none;
   color: black;
 }
@@ -280,8 +281,9 @@ input {
   margin-left: 20px;
 }
 .icondivbottom img {
-  width: 40px;
-  height: 40px;
+  width: 3vw;
+  height: 3vw;
+  margin-right: 1vw;
 }
 /*EDIT POPUP STYLES*/
 
@@ -458,7 +460,7 @@ input {
   border: 2px solid black;
   background-color: white;
   width: 20vw;
-  height: 50vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   background-image: url('./paper.png');
@@ -497,17 +499,17 @@ input {
   font-size: 20px;;
 }
 .multiselect {
-  width: 40px;
-  height: 10px;
+  width: 3vw;
+  height: 2vw;
   border: 2px solid black;
   border-radius: 0;
   margin-left: 10px;
+  margin-top: 3vh;
 }
 .noquestions {
   display: flex;
   flex-direction: row;
   align-items: center;
-  align-items: flex-end;
 }
 .createandstartbuttons {
   display: flex;
@@ -594,6 +596,9 @@ input {
   font-size: 3vw;
   justify-content: space-evenly;
 }
+.playernames li {
+  margin-right: 2vw;
+}
 /*QUESTION STYLES*/
 
 .desktopquestion {
@@ -611,6 +616,19 @@ input {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.questiontitle {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.countdowndesktop {
+  font-size: 3vw;
+  display: flex;
+  align-self: flex-start;
 }
 
 .questiontop h1 {
@@ -663,9 +681,12 @@ input {
   font-size: 3vw;
 }
 .scoreboarddesktop ol {
-  font-size: 2vw;
+  font-size: 1.5vw;
   list-style-type: decimal;
   height: 55vh;
+}
+ol li:nth-child(1) {
+  font-size: 2vw;
 }
 .scoreboarddesktop li {
   margin-bottom: 2vh;
@@ -771,8 +792,9 @@ input {
   width: 50vw;
 }
 .playersmobile li {
-  margin-top: 10vw;
+  margin-top: 3vw;
   font-size: 5vw;
+  margin-right: 2vw;
 }
 /*QUESTION SCREEN MOBILE*/
 

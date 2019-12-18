@@ -9,6 +9,7 @@ export default class QuestionDesktop extends Component {
             answers: [],
             toggle: true,
             questionnumber: null,
+            number: 10
         }
     }
     
@@ -28,7 +29,12 @@ export default class QuestionDesktop extends Component {
             answersarray.sort(function() {
             return .5 - Math.random();
           });
-        this.setState({answers: answersarray})
+        this.setState({answers: answersarray, number: 10})
+        setInterval(() => {
+            if(this.state.number > 0) {
+                this.setState({number: this.state.number - 1})
+            } 
+        }, 1000 );
         }
     }
 

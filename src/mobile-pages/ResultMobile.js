@@ -11,7 +11,7 @@ export default class ResultMobile extends Component {
         return (
             <div className = 'resultsmobile'>
                 <div className = 'resultsmobileheader'>
-                    <h1>{this.state.playerdata.name},</h1>
+                    <h1>{this.state.playerdata.username},</h1>
                     <p>your score was:</p>
                 </div>
                 <p className = 'resultsmobilescore'>{this.state.playerdata.score}</p>
