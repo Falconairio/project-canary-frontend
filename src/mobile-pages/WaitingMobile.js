@@ -4,7 +4,7 @@ import { withAuth } from '../lib/AuthProvider';
 
 class WaitingMobile extends Component {
     state = {
-        
+        players: [],
     }
     quitgame = () => {
         disconnect();
@@ -26,17 +26,17 @@ class WaitingMobile extends Component {
                 <h1>Waiting to start...</h1>
                 <div className = 'playerslist'>
                     <h2>Current Players:</h2>
-                    <ul className = 'playersmobile'>
-                        {
-                            this.state.players
-                        ?
-                            this.state.players.map((player) => {
-                                return <li>{player}</li>
-                            })
-                        :
-                            null
-                        }
-                    </ul>
+                        <ul className = 'playersmobile'>
+                            {
+                                this.state.players
+                            ?
+                                this.state.players.map((player) => {
+                                    return <li>{player}</li>
+                                })
+                            :
+                                null
+                            }
+                        </ul>
                 </div>
                 <button className = 'buttonn' onClick = {this.quitgame}>Quit</button>
             </div>

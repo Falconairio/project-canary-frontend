@@ -24,7 +24,11 @@ class GameMobile extends Component {
                 this.setState({questiontoggle:true, waitingtoggle: false, question: question.question, questionnumber: this.state.questionnumber + 1})
             }), (() => {
                 this.setState( { waitingtoggle: false, questiontoggle: false, resulttoggle: true } )
-            })
+            }),(players) => {
+                console.log(players)
+                console.log(this.state)
+                this.setState( {players: players.slice(1,players.length), gamemaster: players[0]} )
+            }
             );
             this.setState({ questiontoggle: false, waitingtoggle: true, gameId})
     }
@@ -34,6 +38,7 @@ class GameMobile extends Component {
                 {
                     this.state.waitingtoggle
                     ?<WaitingScreenMoblie
+                    players = {this.state.players}
                     gameId = {this.state.gameId} />
                     :null
                 }

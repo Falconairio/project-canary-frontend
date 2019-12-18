@@ -7,7 +7,7 @@ const socketUrl = process.env.REACT_APP_API_URL;
 
 let socket;
 
-const connect = (playerid, gameid, questioncb, resultcb) => {
+const connect = (playerid, gameid, questioncb, resultcb, playercb) => {
 let error = null;
 
 socket = openSocket(socketUrl, {
@@ -15,15 +15,16 @@ autoConnect: false,
 });
 
 socket.on('connect', () => {
-    socket.emit('get-list-of-players', gameid)
-
 socket.emit('authentication', {
 _id: playerid,
 gameId: gameid
 });
+socket.emit('get-list-of-players', gameid)
 });
 
 // socket.on('game-started', (question) => questioncb );
+
+socket.on('send-list-of-players',player => playercb(player))
 
 socket.on('new-question', (question) => questioncb(question))
 

@@ -31,8 +31,7 @@ class Results extends Component {
                 <Link to="/home">
                     {' '}
                     <button className = 'scoreboardbutton' onClick = {this.endgame}>End Game</button>
-                </Link>
-                
+                </Link> 
             </div>
         )
     }

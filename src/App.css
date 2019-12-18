@@ -558,13 +558,15 @@ input {
 .playerslistdesktopcontainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border: 2px solid black;
   width: 40vw;
   margin-right: 5vw;
+  align-items: center;
 }
 .playerslistdesktopcontainer h1 {
   font-size: 3vw;
+  margin-bottom: 3vh;
 }
 .waitingtostartdesktop {
   display: flex;
@@ -755,6 +757,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 50vh;
 }
 .playerslist h2 {
   font-size: 7vw;
