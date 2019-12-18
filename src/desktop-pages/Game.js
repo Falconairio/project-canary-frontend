@@ -36,22 +36,20 @@ class Game extends Component {
         desktopconnect(this.props.user._id, gameId, (question) => {
             this.setState( {question: question.question, questionnumber: this.state.questionnumber + 1} )
         }, (players) => {
+            console.log(players)
+            console.log(this.state)
             this.setState( {players: players.slice(1,players.length), gamemaster: players[0]} )
-        }, () => {
-            this.setState( { questiontoggle: false, resultstoggle: true } )
+        }, (results) => {
+            this.setState( { questiontoggle: false, resultstoggle: true, results: results } )
         });
         getplayers((players) => {
+            console.log('in function call')
             this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
         }, gameId)
         setTimeout(() => {
             this.setState({ questiontoggle: false, waitingtoggle: true})
         }, 600); 
         this.setState({ gameId })
-    }
-    componentDidUpdate(prevprops,prevstate) {
-        if(prevstate.players !== this.state.players) {
-            console.log('foo')
-        }
     }
     render() {
         return (
@@ -76,7 +74,9 @@ class Game extends Component {
                 {
                     this.state.resultstoggle
                     ?<Results
-                        players = { this.state.players }
+                        players = {this.state.results}
+                        gameId = {this.state.gameId}
+                        endgame = {this.props.endgame}
                         />
                     :
                         null

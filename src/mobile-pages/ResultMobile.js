@@ -5,10 +5,6 @@ export default class ResultMobile extends Component {
         super(props)
         this.state = {
             playerdata: this.props.player
-            // playerdata: {
-            //     name: 'Griffith',
-            //     score: 5000
-            // }
         }
     }
     render() {

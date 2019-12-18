@@ -22,7 +22,7 @@ export default class QuestionDesktop extends Component {
         this.setState({answers: answersarray})
     } 
     componentDidUpdate(prevprops) {
-        if(prevprops.question !== this.props.question) {
+        if(prevprops.question !== this.props.question && this.props.question) {
             this.setState({question: this.props.question, questionnumber: this.props.questionnumber})
             let answersarray = [this.props.question.rightAnswer,this.props.question.wrongAnswer1,this.props.question.wrongAnswer2,this.props.question.wrongAnswer3]
             answersarray.sort(function() {

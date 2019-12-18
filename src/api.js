@@ -15,8 +15,7 @@ autoConnect: false,
 });
 
 socket.on('connect', () => {
-console.log(socketUrl);
-console.log('Connected');
+    socket.emit('get-list-of-players', gameid)
 
 socket.emit('authentication', {
 _id: playerid,
@@ -28,7 +27,7 @@ gameId: gameid
 
 socket.on('new-question', (question) => questioncb(question))
 
-socket.on('show-results', () => resultcb())
+socket.on('show-results', (results) => resultcb(results))
 
 // socket.on('new-question', () => {
 //     //socket.emit('answer', {answer:answer.value,question:question.innerHTML, id:id});
@@ -73,7 +72,7 @@ const desktopconnect = (userid,gameid, questioncb, playercb, resultcb) => {
 
     socket.on('send-list-of-players',player => playercb(player))
 
-    socket.on('show-results', () => resultcb())
+    socket.on('show-results', (results) => resultcb(results))
 
     socket.on('unauthorized', (reason) => {
         console.log('Unauthorized:', reason);
@@ -94,13 +93,10 @@ const disconnect = () => {
     socket.disconnect();
 }
 
-const desktopdisconnect = () => {
-    socket.emit('kill-connection')
-}
-
 const getplayers = (cb, gameId) => {
     socket.on('send-list-of-players',player => cb(player))
     socket.emit('get-list-of-players', gameId);
+    console.log('in getplayers')
 }
 const sendanswer = (questionNumber, answerRight) => {
      socket.emit('answer', {questionNumber,answerRight})

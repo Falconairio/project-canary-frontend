@@ -8,9 +8,11 @@ class EnterName extends Component {
         username: '',
         bootcamp: 'other',
         errormessage: '',
+        toggle: true,
     }
     handleFormSubmit = event => {
         event.preventDefault();
+        this.setState({toggle: false})
         const { username ,bootcamp } = this.state;
         if(username) {
         let path = this.props.history.location.pathname;
@@ -30,7 +32,9 @@ class EnterName extends Component {
     render() {
         const { username, bootcamp } = this.state
         return (
-            <div className = 'enternamediv'>
+            <div>
+            {this.state.toggle
+            ?<div className = 'enternamediv'>
                 <div className = 'playerformfields'>
                 <h1>Join active game</h1>
                     <div className = 'nameinput'>
@@ -59,9 +63,10 @@ class EnterName extends Component {
                     :null
                     }
                     <button onClick = {this.handleFormSubmit}>Enter Game</button>
-                    
+                    </div>
                 </div>
-                
+            : <h1>Wait...</h1>
+            }
             </div>
         )
     }

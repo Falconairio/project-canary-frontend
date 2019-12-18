@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 class Results extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Results extends Component {
     }
     }
     endgame = () => {
-        this.props.history.push('/home');
+        this.props.endgame(this.props.gameId)
     }
     componentDidMount() {
         let sortedbyscore = this.props.players.sort((a,b) => (a.score < b.score) ? 1 : -1)
@@ -21,13 +22,17 @@ class Results extends Component {
                 <ol>
                     {this.state.scoreboard
                     ? this.state.scoreboard.slice(0,10).map((player,index) => {
-                        return <li className = 'playerresultelement'><strong>{index +1 }. {player.name}:</strong><p>{player.score}</p></li>
+                        return <li className = 'playerresultelement'><strong>{index +1 }. {player.username}:</strong><p>{player.score}</p></li>
                     })
                     : 
                         null
                     }
                 </ol>
-                <button className = 'scoreboardbutton' onClick = {this.endgame}>End Game</button>
+                <Link to="/home">
+                    {' '}
+                    <button className = 'scoreboardbutton' onClick = {this.endgame}>End Game</button>
+                </Link>
+                
             </div>
         )
     }

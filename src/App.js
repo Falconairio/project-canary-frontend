@@ -36,7 +36,7 @@ class App extends Component {
           {/* <Route exact path = '/home' component = {Private} /> */}
           {/* <Route exact path = '/questionmobile' component = {QuestionMobile} />
           <Route exact path = '/results' component = {Results} /> */}
-          <Route path = '/resultsmobile' component = {ResultMobile} />
+          {/* <Route path = '/resultsmobile' component = {ResultMobile} /> */}
         </Switch>
       </div>
     );

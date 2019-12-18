@@ -62,6 +62,10 @@ class Auth {
         .then( (data) => data)
         .catch( (err) => console.log(err));
   }
+  endgame(gameId) {
+    return this.auth
+      .patch('/game/end-game',{ gameId })
+  }
   me() {
     return this.auth.get('/auth/me').then(response => response.data);
   }

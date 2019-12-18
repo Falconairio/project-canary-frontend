@@ -28,7 +28,7 @@ export default class QuestionMobile extends Component {
         } else {
             answerRight = false;
         }
-        sendanswer(this.props.questionnumber,answerRight);
+        sendanswer(this.props.questionnumber - 1,answerRight);
         this.setState({answertoggle : false, recievedtoggle: true})
     }
     
