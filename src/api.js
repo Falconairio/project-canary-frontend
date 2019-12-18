@@ -95,7 +95,7 @@ const disconnect = () => {
 }
 
 const desktopdisconnect = () => {
-    socket.emit('killconnection')
+    socket.emit('kill-connection')
 }
 
 const getplayers = (cb, gameId) => {

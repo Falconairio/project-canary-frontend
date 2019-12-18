@@ -9,6 +9,11 @@ class WaitingScreen extends Component {
     componentDidMount() {
         this.setState( {players: this.props.players, gamemaster: this.props.gamemaster} )
     }
+    componentDidUpdate(prevprops,prevstate) {
+        if(prevprops.players !== this.props.players) {
+            this.setState({players: this.props.players})
+        }
+    }
     render() {
         return (
             <div className = 'waitingscreencontainer'>

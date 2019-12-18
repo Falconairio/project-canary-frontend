@@ -4,8 +4,6 @@ import { withAuth } from '../lib/AuthProvider';
 
 class WaitingMobile extends Component {
     state = {
-        // players: this.props.game.players
-        players: []
         
     }
     quitgame = () => {

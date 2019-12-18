@@ -557,6 +557,7 @@ input {
 }
 .playerslistdesktopcontainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   border: 2px solid black;
   width: 40vw;
@@ -583,6 +584,13 @@ input {
 }
 .waitingtostartdesktop h1 {
   font-size: 4vw;
+}
+.playernames {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 3vw;
+  justify-content: space-evenly;
 }
 /*QUESTION STYLES*/
 
