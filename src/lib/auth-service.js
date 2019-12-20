@@ -10,14 +10,12 @@ class Auth {
   }
 
   signup(user) {
-    console.log(user);
     const { username, email, password, photoUrl } = user;
     return this.auth
       .post('/auth/signup', { username, email, password, photoUrl })
       .then(({ data }) => data);
   }
   update(user) {
-    console.log(user)
     const { username, email, oldpassword, password, photoUrl } = user;
     return this.auth
       .put('/user/update', { username, email, oldpassword, password, photoUrl })
@@ -47,8 +45,6 @@ class Auth {
     return this.auth.post('/auth/logout', {}).then(response => response.data);
   }
   addplayer(player) {
-    console.log(player)
-    const { username, bootcamp, gameId } = player;
     return this.auth
       .post('player/addplayer',{player})
       .then(({data}) => data)

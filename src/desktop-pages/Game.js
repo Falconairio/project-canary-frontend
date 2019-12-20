@@ -14,6 +14,7 @@ class Game extends Component {
             waitingtoggle: false,
             questiontoggle: false,
             resultstoggle: false,
+            loadingtoggle: false,
             question: {},
             results: [],
             players: [],
@@ -24,10 +25,10 @@ class Game extends Component {
 }
     togglewaiting = event => {
         event.preventDefault();
-        console.log(this.state.gameId)
+        this.setState({waitingtoggle: false, loadingtoggle: true})
         this.props.startgame(this.state.gameId);
         setTimeout(() => {
-            this.setState({ waitingtoggle: false, questiontoggle: true })
+            this.setState({ loadingtoggle: false, questiontoggle: true })
         }, 2000);
     }
     componentDidMount() {
@@ -36,14 +37,11 @@ class Game extends Component {
         desktopconnect(this.props.user._id, gameId, (question) => {
             this.setState( {question: question.question, questionnumber: this.state.questionnumber + 1} )
         }, (players) => {
-            console.log(players)
-            console.log(this.state)
             this.setState( {players: players.slice(1,players.length), gamemaster: players[0]} )
         }, (results) => {
             this.setState( { questiontoggle: false, resultstoggle: true, results: results } )
         });
         getplayers((players) => {
-            console.log('in function call')
             this.setState( { players: players.slice(1,players.length), gamemaster: players[0]})
         }, gameId)
         setTimeout(() => {
@@ -61,6 +59,11 @@ class Game extends Component {
                         players = {this.state.players}
                         gamemaster = {this.state.gamemaster}
                          />
+                    :null
+                }
+                {
+                    this.state.loadingtoggle
+                    ?<h1>Loading...</h1>
                     :null
                 }
                 {

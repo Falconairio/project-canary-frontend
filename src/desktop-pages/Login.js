@@ -33,7 +33,7 @@ class Login extends Component {
             <p>or...</p>
             <Link to="/signup">
                 {' '}
-                <button className = 'buttonn' id = 'signupbutton' >Signup</button>{' '}
+                <button className = 'buttonn'>Signup</button>{' '}
             </Link>
           </div>
           <form onSubmit={this.handleFormSubmit}>
@@ -53,7 +53,7 @@ class Login extends Component {
               onChange={this.handleChange}
             />
 
-           <button id = 'loginbutton'>Submit</button>
+           <button className = 'buttonn'>Submit</button>
           </form>
         </div>
         {

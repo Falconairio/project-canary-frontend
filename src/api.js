@@ -97,7 +97,6 @@ const disconnect = () => {
 const getplayers = (cb, gameId) => {
     socket.on('send-list-of-players',player => cb(player))
     socket.emit('get-list-of-players', gameId);
-    console.log('in getplayers')
 }
 const sendanswer = (questionNumber, answerRight) => {
      socket.emit('answer', {questionNumber,answerRight})

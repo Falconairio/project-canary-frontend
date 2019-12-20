@@ -8,9 +8,7 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
     const { username, password, photoUrl,email, confirmpassword } = this.state;
-    //  console.log('Signup -> form submit', { username, password });
     if(username,password,confirmpassword) {
     if( password === confirmpassword) {
       if(photoUrl) {
@@ -31,14 +29,12 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
   fileOnchange = (event) => {    
-    console.log(this.props)
     const file = event.target.files[0];
     const uploadData = new FormData()
     uploadData.append('photo', file)
 
     authService.imageUpload(uploadData)
     .then((photoUrl) => {
-      console.log(photoUrl)
       this.setState({photoUrl})
     })
     .catch((error) => console.log(error))
@@ -88,7 +84,7 @@ class Signup extends Component {
           onChange = {this.fileOnchange}
           />
 
-          <button className='buttonn' id = 'signupbutton'>Sign Up</button>
+          <button className='buttonn'>Sign Up</button>
         </form>
         </div>
         <div className = 'rightsidesignup'>
@@ -97,7 +93,7 @@ class Signup extends Component {
         <p>Already have account?</p>
         <Link to="/">
           {' '}
-          <button className = 'buttonn' id = 'loginbutton'>Login</button>
+          <button className = 'buttonn'>Login</button>
         </Link>
         </div>
       </div>

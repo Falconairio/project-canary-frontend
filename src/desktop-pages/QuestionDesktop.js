@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class QuestionDesktop extends Component {
     constructor(props) {
         super(props)
-        console.log(props.question)
         this.state = {
             question: this.props.question,
             answers: [],
@@ -15,7 +14,6 @@ export default class QuestionDesktop extends Component {
     
     componentDidMount() {
         this.setState({questionnumber: this.props.questionnumber})
-        console.log(this.props)
         let answersarray = [this.state.question.rightAnswer,this.state.question.wrongAnswer1,this.state.question.wrongAnswer2,this.state.question.wrongAnswer3]
         answersarray.sort(function() {
             return .5 - Math.random();

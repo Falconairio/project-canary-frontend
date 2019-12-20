@@ -58,7 +58,6 @@ class AuthProvider extends React.Component {
   }
 
   signup = user => {
-    console.log(user)
     const { username, password, photoUrl, email } = user;
 
     authService
@@ -67,7 +66,6 @@ class AuthProvider extends React.Component {
       .catch(err => console.log(err));
     };
     update = user => {
-    console.log('in authprovider update', user)
     const { username, email, oldpassword, password, photoUrl } = user;
     authService
     .update({ username, email, oldpassword, password, photoUrl })
@@ -120,7 +118,6 @@ class AuthProvider extends React.Component {
     authService
       .creategame({ numberofquestions, webdevcheck, datanylcheck, uxcheck, name })
         .then( (datae) => {
-          console.log('this is the data in authprovider',datae.data)
           this.setState({game: datae.data})
         })
         .catch( (err) => console.log(err));

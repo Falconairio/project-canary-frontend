@@ -51,10 +51,10 @@ class Home extends Component {
           <div>
           <Link to="/creategame" className ='creategamediv'>
             {' '}
-            <div>
+            {/* <div> */}
             <img src={require('./../images/plus-square.svg')} alt = '' className = 'plusicon'/>
             <h1>Create a Game</h1>
-            </div>
+            {/* </div> */}
           </Link>
           </div>
           {/*{ eslint-disable-next-line} */}

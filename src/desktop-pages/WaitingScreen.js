@@ -6,6 +6,7 @@ class WaitingScreen extends Component {
         players: [],
         gamemaster: null,
         number: 0,
+        loadingtoggle: false
     }
     componentDidMount() {
         this.setState( {players: this.props.players, gamemaster: this.props.gamemaster} )
@@ -18,11 +19,20 @@ class WaitingScreen extends Component {
     render() {
         return (
             <div className = 'waitingscreencontainer'>
-                <div className = 'waitingtostartdesktop'>
-                    <h1>Waiting to start...</h1>
-                    <button onClick = {this.props.toggle}>Start</button>
+                <div className = 'waitingheadercontainer'>
+                    <div className = 'waitingtostartdesktop'>
+                        <h1>Waiting to start...</h1>
+                        <button onClick = {this.props.toggle}>Start</button>
+                    </div>
+                    <div className = 'gameinfocontainer'>
+                        <h1>{this.props.game.name} by {this.props.user.username}</h1>
+                        <div className = 'numbertext'>
+                            <h1 className = 'noplayers'># of players</h1>
+                            <h1 className = 'colon'>:</h1>
+                            <h1 className = 'number'>{this.state.players.length}</h1>
+                        </div>
+                    </div>
                 </div>
-
                 <div className = 'waitingdesktopbottom'>
                     <div className = 'playerslistdesktopcontainer'>
                         <h1>Players:</h1>
@@ -34,11 +44,9 @@ class WaitingScreen extends Component {
                     </div>
                     <div className = 'qrcodediv'>
                         <h1>Scan QR Code to join</h1>
-                        <img src = {this.props.game.qrCode} />
+                        <img src = {this.props.game.qrCode} alt = '' />
                     </div>
                 </div>
-                <p>{this.state.gamemaster}'s Game</p>
-                <p>Number of players: {this.state.number}</p>
             </div>
         )
     }

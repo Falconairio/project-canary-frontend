@@ -16,7 +16,6 @@ class CreateGame extends Component {
         this.setState({ [name]: value });
       };
       handleFormSubmit = event => {
-          console.log(this.state)
         event.preventDefault();
         const { numberofquestions, webdevcheck, datanylcheck, uxcheck, name } = this.state;
         if(webdevcheck === true || datanylcheck === true || uxcheck === true) {
@@ -34,8 +33,6 @@ class CreateGame extends Component {
         event.preventDefault();
           if(this.props.game) {
              this.props.history.push(`/game/desktop/id=${this.props.game._id}`)
-            //this.props.history.push(`/addquestion`)
-            console.log('this is the game',this.props.game)
           } else {
               this.setState({errormessage: 'Game has not been created'})
           }

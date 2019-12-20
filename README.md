@@ -12,39 +12,37 @@ This is a live multiplayer game to prove the tech skills and knowledge gained du
 
 ## User Stories
 
-- **ERROR PAGES**
-  - **404** - page doesn’t exist 
-  - **500** - internal server error
 - **HOME PAGE - anonymous**
   - log in
   - sign up
-    - nickname
-    - bootcamp
+    - name
+    - email
     - avatar
   - log out redirects here
 - **HOME PAGE - registered user**
   - Create game
-  - User stats
+  - Add Question 
 - **USER PROFILE**
-  - modify: avatar, nickname, bootcamp
+  - modify: name, email, avatar, password
 - **CREATE GAME**
-  - Select field: Data, UX, WebDev, All
-  - Get questions from the collection
-  - Game name
-  - Show QR - waiting for players
-  - Game starting - Countdown
+  - Select field: Data, UX, WebDev
+  - Get random questions from the collection based on your selection
+  - Choose number of questions 
+  - Choose Game name
 - **PLAY GAME** - Main device
+  - Show QR and Players List - waiting screen
   - Show question - possible answers x4
-  - Show right answer - partial score
-  - transition screen to next question
-  - show final scoreboard
+  - Show final scoreboard
+    -End the game by pressing the button
 - **GAME** - Player device
   - Welcome Screen
-    - Add nickname, avatar
+    - Add nickname and bootcamp
   - Waiting for other players
+    -Quit game if needed
   - Question - possible answers screens
   - Transition screen to next question
-  - Show final score
+    -Shows if you got the question right or not
+  - Show final score for player
 
 ## 
 
@@ -74,31 +72,33 @@ This is a live multiplayer game to prove the tech skills and knowledge gained du
 
 ## Components
 
-- SplashPage
+- LoginPage
 
 - SigninPage
 
-- CreateGamePage
+- HomePage
 
-- WaitingForPlayersPage
+- EditProfilePage
 
-- StartGamePage
-
-- PlayingGamePage
-
-- GameFinishedPage
-
-- UserProfilePage
+- DeleteProfilePage
 
 - AddQuestionPage
 
-- PlayerWelcomePage
+- CreateGamePage
 
-- PlayerGamePage
+- WaitingScreenPage (Desktop)
 
-- PlayerGameFinishedPage
+- QuestionPage (Desktop)
 
-  
+- ResultPage (Desktop)
+
+- EnterNamePage (Mobile)
+
+- WaitingScreenPage (Mobile)
+
+- QuestionPage (Mobile)
+
+- ResultPage (Mobile)
 
 ## Services
 

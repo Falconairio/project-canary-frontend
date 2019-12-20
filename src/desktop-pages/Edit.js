@@ -6,10 +6,6 @@ import { withRouter } from 'react-router';
 
 class Edit extends Component {
     state = { username: '', email:'', oldpassword: '', photoUrl: '', password: '',confirmpassword: '', errormessage: '', toggleedit:this.props.toggledit, history: this.props.history}
-    componentDidMount() {
-        console.log('in component did mount')
-        console.log(this.props)
-    }
     handleFormSubmit = event => {
         event.preventDefault();
         const { username, email, oldpassword, photoUrl, password, confirmpassword, errormessage } = this.state;

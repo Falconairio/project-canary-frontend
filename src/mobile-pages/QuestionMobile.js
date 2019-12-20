@@ -8,7 +8,8 @@ export default class QuestionMobile extends Component {
             question: this.props.question,
             answers: [],
             answertoggle: true,
-            recievedtoggle: false
+            recievedtoggle: false,
+            right: null
         }
     }
 
@@ -25,8 +26,10 @@ export default class QuestionMobile extends Component {
         let answerRight;
         if(answer === this.state.question.rightAnswer) {
             answerRight = true;
+            this.setState({right: 'right'})
         } else {
             answerRight = false;
+            this.setState({right: 'wrong'})
         }
         sendanswer(this.props.questionnumber - 1,answerRight);
         this.setState({answertoggle : false, recievedtoggle: true})
@@ -46,18 +49,23 @@ export default class QuestionMobile extends Component {
     render() {
         return (
             <div className = 'questionmobile'>
-                <h1>{this.state.question.question}</h1>
+            <h1>{this.state.question.question}</h1>
                 {this.state.answertoggle
                     ?
-                        this.state.answers.map((answer) => {
-                            return <button className = 'answermobilebutton' value = {answer} onClick = {this.submitanswer}>{answer}</button>
-                        })
+                        <div>
+                            {this.state.answers.map((answer) => {
+                                return <button className = 'answermobilebutton' value = {answer} onClick = {this.submitanswer}>{answer}</button>
+                            })}
+                        </div>
                     :
                         null
                 }
                 {this.state.recievedtoggle
                     ?
-                        <h1>Answer Sent</h1>
+                        <div>
+                            <h1>Answer Sent</h1>
+                            <h1>You got that answer {this.state.right}</h1>
+                        </div>
                     :
                         null
                     }

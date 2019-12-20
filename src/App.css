@@ -88,7 +88,7 @@ input {
   text-align: center;
   width: 120px;
   height: 35px;
-  padding-left: 1.5em;
+  /* padding-left: 1.5em; */
   /* padding-left: 35px; */
   border: 2px solid black;
   font-family: 'Patrick Hand', cursive;
@@ -116,9 +116,6 @@ input {
   box-shadow: none;
   border: 2px solid black;
 }
-#signupbutton {
-  padding-left: 2.7vw;
-}
 .loginorsignup {
   display: flex; 
   flex-direction: row;
@@ -135,18 +132,6 @@ input {
   text-decoration: underline;
   text-decoration-skip: none;
   margin-right: 3px;
-}
-#loginbutton {
-  display: flex;
-  align-self: center;
-  text-align: center;
-  width: 120px;
-  height: 35px;
-  padding-left: 2.5em;
-  /* padding-left: 35px; */
-  border: 2px solid black;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 15px;
 }
 .signupform {
   display: flex;
@@ -430,6 +415,7 @@ input {
 .addquestionoutterform {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 .addquestionform input {
   width: 10vw;
@@ -451,7 +437,6 @@ input {
 }
 #questionbutton {
   text-align: center;
-  padding-left: 2vw;
   margin-top: 2vh;
 }
 /*ADDGAME STYLES*/
@@ -460,7 +445,7 @@ input {
   border: 2px solid black;
   background-color: white;
   width: 20vw;
-  height: 60vh;
+  height: 35vw;
   display: flex;
   flex-direction: column;
   background-image: url('./paper.png');
@@ -544,13 +529,48 @@ input {
   width: 35vw;
   height: 35vw;
 }
+.waitingheadercontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.noplayers {
+  width: 3vw;
+  text-align: center;
+  margin-right: 1vw;
+  font-size: 2vw;
+}
+.numbertext {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 10vw;
+}
+.colon {
+  font-size: 3vw;
+}
+.number {
+  font-size: 3vw;
+}
+
+.gameinfocontainer {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30vw;
+  height: 5vw;
+}
+
 .qrcodediv img {
   width: 30vw;
   height: 30vw;
   padding-bottom: 10px;
 }
 .qrcodediv h1 {
-  font-size: 3vh;
+  font-size: 2vw;
   margin-bottom: 10px;
 }
 .waitingdesktopbottom {
@@ -565,7 +585,14 @@ input {
   width: 40vw;
   margin-right: 5vw;
   align-items: center;
+  overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 .playerslistdesktopcontainer h1 {
   font-size: 3vw;
   margin-bottom: 3vh;
@@ -602,9 +629,8 @@ input {
 /*QUESTION STYLES*/
 
 .desktopquestion {
-  width: 100vw;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  width: 90vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: baseline;
@@ -640,11 +666,11 @@ input {
   margin-top: 3vh;
 }
 .answerbuttonsdesktop {
-  margin-top: 5vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 5vh;
 
 }
 .answerbutton {
@@ -752,14 +778,14 @@ ol li:nth-child(1) {
 .enterbutton {
   margin-bottom: 9vh;
 }
-.enterbutton button {
+/* .enterbutton button {
   border: 2px solid black;
   background-color: white;
   font-family: 'Patrick Hand', cursive;
   width: 30vw;
   height: 7vh;
   font-size: 5vw;
-}
+} */
 /*MOBILE WAITING PAGE STYLES*/
 .waitingmobilediv {
   height: 80vh;
@@ -779,6 +805,7 @@ ol li:nth-child(1) {
   flex-direction: column;
   align-items: center;
   height: 50vh;
+  overflow-y: scroll;
 }
 .playerslist h2 {
   font-size: 7vw;
@@ -803,6 +830,7 @@ ol li:nth-child(1) {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
   height: 100vh;
   width: 100vw;
 }

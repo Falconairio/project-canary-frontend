@@ -12,15 +12,19 @@ class EnterName extends Component {
     }
     handleFormSubmit = event => {
         event.preventDefault();
-        this.setState({toggle: false})
         const { username ,bootcamp } = this.state;
         if(username) {
-        let path = this.props.history.location.pathname;
-        let gameId = path.substring(path.indexOf('=') + 1, path.length)
-        this.props.addplayer({ username,bootcamp, gameId });
-        setTimeout(() => {
-            this.props.history.push(`/game/id=${gameId}`)
-        } ,3000)
+            if(username.length <= 10) {
+                this.setState({toggle: false})
+                let path = this.props.history.location.pathname;
+                let gameId = path.substring(path.indexOf('=') + 1, path.length)
+                this.props.addplayer({ username,bootcamp, gameId });
+                setTimeout(() => {
+                    this.props.history.push(`/game/id=${gameId}`)
+                } ,3000)
+            } else {
+                this.setState({errormessage: 'Name too long!'})
+            }
         } else {
           this.setState({errormessage:'Enter a name'})
           }
@@ -62,7 +66,7 @@ class EnterName extends Component {
                     ?<p>{this.state.errormessage}</p>
                     :null
                     }
-                    <button onClick = {this.handleFormSubmit}>Enter Game</button>
+                    <button onClick = {this.handleFormSubmit} className = 'buttonn'>Enter Game</button>
                     </div>
                 </div>
             : <h1>Wait...</h1>

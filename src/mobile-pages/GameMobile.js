@@ -26,11 +26,8 @@ class GameMobile extends Component {
                 var result = results.find(obj => {
                     return obj.username === this.props.player.username
                   })
-                  console.log(result)
                 this.setState( { waitingtoggle: false, questiontoggle: false, resulttoggle: true, results: result } )
             }),(players) => {
-                console.log(players)
-                console.log(this.state)
                 this.setState( {players: players.slice(1,players.length), gamemaster: players[0]} )
             }
             );
